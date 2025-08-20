@@ -1,0 +1,364 @@
+---
+title   : 'Data Science for Linguists'
+subtitle : 'Residuals'
+author   : "Joseph V. Casillas, PhD"
+institute: "Rutgers University<mybr>Spring 2025<br>Last update: `r Sys.Date()`"
+---
+
+```{r}
+#| label: load-helpers
+#| echo: false 
+#| message: false 
+#| warning: false
+source(here::here("assets", "scripts", "helpers.R"))
+```
+
+
+
+
+# What is Data Science again? {.transition}
+
+---
+
+## {background-image="../assets/img/workflow/data_science1.png" background-size="contain"}
+
+---
+
+## {background-image="../assets/img/workflow/data_science2.png" background-size="contain"}
+
+---
+
+## {background-image="../assets/img/workflow/data_science3.png" background-size="contain"}
+
+---
+
+## {background-image="../assets/img/workflow/datascience_workflow1.png" background-size="contain"}
+
+. . .
+
+<center>
+
+[**You have learned how to version control this process!**]{.p-font .emph style="font-size: 1.3em;"}
+
+</center>
+
+---
+
+## {background-image="../assets/img/workflow/datascience_workflow2.png, ../assets/img/workflow/workflow_10.png" background-size="600px, 700px" background-position="15% 90%, 95% 40%"}
+
+. . .
+
+<center>
+
+[**You have learned how to version control this process!**]{.p-font .emph style="font-size: 1.3em;"}
+
+</center>
+
+---
+
+## {background-color="#272822"}
+
+<br><br><br>
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.r-fit-text .p-font}
+So what is version <mybr>control (again)?
+:::
+:::
+::::
+
+---
+
+## {background-color="#272822" background-image="../assets/img/workflow/final_doc.png" background-size="contain" background-position="right" visibility="uncounted"}
+
+<br><br><br>
+
+::: columns
+::: {.column width="50%"}
+::: {.r-fit-text .p-font}
+So what is version <mybr>control (again)?
+:::
+:::
+:::
+---
+
+::: columns
+::: {.column width="55%"}
+::: {.r-fit-text .emph .p-font}
+Don't forget the stats...
+:::
+<br><br><br>
+![](../assets/img/workflow/datascience_workflow3.png)
+:::
+
+::: {.column width="45%"}
+
+<br><br><br>
+
+```{r}
+#| label: stats-example
+#| fig-asp: 0.7
+#| fig-width: 4.5
+#| echo: true
+
+mtcars |>
+  ggplot() + 
+  aes(x = disp, y = mpg) + 
+  geom_point() + 
+  geom_smooth(method = 'lm', formula = "y ~ x")
+```
+:::
+:::
+
+
+
+
+# We do literate programming {.smaller}
+
+::: columns
+::: {.column width="45%"}
+- This means we write code in a way that clearly documents 
+what we did.
+
+- Instead of writing code with the purpose of telling the 
+computer what to do, we write code that tells other humans 
+what we told the computer to do and *why*. 
+
+- Importantly, we don't separate our code from the report/essay/manuscript
+we are writing. Everything is together, in a single document (usually).  
+:::
+:::
+
+![](../assets/img/workflow/datascience_workflow4.png){.absolute top="200" right="-80" width="600" height="187"}
+
+
+
+
+
+
+#
+
+::: {.r-stack .p-font style="font-size: 1.6em;"}
+**In this class you have learned to...**
+:::
+
+. . .
+
+<mybr>
+
+::: {.r-stack .p-font .emph style="font-size: 1.2em;"}
+**manage version controlled research projects**
+:::
+
+::: {.r-stack .p-font}
+[in a way that facilitates <u>collaboration</u> and <u>honesty</u>]{style="font-size: 0.8em;"}
+:::
+
+. . .
+
+<mybr>
+
+::: {.r-stack .p-font style="font-size: 1.2em;"}
+**get** and [**tidy**]{style="font-size: 1.6em; color: #497dd7;"} data
+:::
+
+. . .
+
+<mybr>
+
+::: {.r-stack .p-font style="font-size: 1.2em;"}
+**transform** and [**visualize**]{style="font-size: 1.6em" .emph} your data  
+:::
+
+. . .
+
+<mybr>
+
+::: {.r-stack .p-font style="font-size: 1.2em;"}
+**fit** statistical [**models**]{style="font-size: 1.6em; color: #497dd7;"} to your data and **test** hypotheses  
+:::
+
+. . .
+
+<mybr>
+
+::: {.r-stack .p-font style="font-size: 1.2em;"}
+**communicate** your results using [**literate programming**]{style="font-size: 1.6em" .emph}
+:::
+
+
+
+
+
+
+# 
+
+::: {.r-stack .p-font}
+This is [**reproducible research**]{style="font-size: 1.4em;" .emph}
+:::
+
+---
+
+## {background-image="https://raw.githubusercontent.com/jvcasillas/media/master/rstats/memes/philosophy_of_science_stats.png" background-size="contain"}
+
+---
+
+```{r}
+#| label: tiktok1
+#| eval: false
+t1_url <- "https://www.tiktok.com/@chelseaparlettpelleriti/video/6969954394909576453"
+t1 <- tiktok_embed(t1_url)
+t1
+```
+
+<!--
+need more methods
+--> 
+
+::: footer
+<https://www.tiktok.com/@chelseaparlettpelleriti/video/6969954394909576453>
+:::
+
+---
+
+## What we've seen {.smaller background-image="./index_files/img/lm_ex1.png" background-position="100% 50%" background-size="950px"}
+
+- MRC
+- Linear regression
+- General linear model
+- Generalized linear model
+
+---
+
+## What we've seen {.smaller background-image="./index_files/img/lm_ex2.png" background-position="100% 50%" background-size="950px"}
+
+- MRC
+- Linear regression
+- General linear model
+- Generalized linear model
+
+---
+
+## What we've seen {.smaller background-image="./index_files/img/lm_ex4.png" background-position="100% 50%" background-size="950px"}
+
+- MRC
+- Linear regression
+- General linear model
+- Generalized linear model
+
+---
+
+## [What we've seen]{.emph} {.smaller background-color="black" background-image="./index_files/img/lm_ex5.png" background-position="100% 50%" background-size="950px"}
+
+~~Frequentist~~  
+
+- [**Bayesian**]{.emph} MRC
+- [**Bayesian**]{.emph} Linear regression
+- [**Bayesian**]{.emph} General linear model
+- [**Bayesian**]{.emph} Generalized linear model
+
+---
+
+## {background-image="https://raw.githubusercontent.com/jvcasillas/media/master/rstats/memes/rstats_knowledge.png" background-size="contain"}
+
+
+
+
+
+# {.transition visibility="uncounted"}
+
+{{< tweet user=phdemetri id=1634568517688127488 >}}
+
+<!--
+make a table tweet
+--> 
+
+
+
+# Next steps {.transition}
+
+---
+
+## Moving forward {background-image="./index_files/img/gelman_hill.png" background-position="95% 50%" background-size="600px"}
+
+::: {.columns}
+::: {.column .closelist style="font-size: 0.75em; width: 60%"}
+- Unfortunately we don't have enough time to go into more detail
+- Your journey with programming and statistics is just getting started
+- Use your knowledge to think critically about what you read and about your own data
+- New techniques and methods are constantly coming out, but it seems unlikely we will stray too far from the linear model
+- Book recommendations
+  - Data Analysis Using Regression and Multlilevel-Hierarchicaal Models [@gelman2007data]
+  - Regression and other stories [@gelman2021regression]
+  - Statistical Rethinking [@mcelreath2018statistical]
+:::
+:::
+
+---
+
+## Moving forward {background-image="https://images.tandf.co.uk/common/jackets/amazon/978148225/9781482253443.jpg" background-position="95% 50%" background-size="600px"}
+
+::: {.columns}
+::: {.column .closelist style="font-size: 0.72em; width: 60%"}
+- Getting help
+  - stackoverflow.com
+  - coursera.con
+  - datacamp.com
+
+<p></p>
+
+- Coding (things to learn)
+  - functional programming
+  - leaving the tidyverse...
+
+<p></p>
+
+- Useful links for mixed effects models
+  - [Getting started](http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf)
+  - [Intro](https://ourcodingclub.github.io/2017/03/15/mixed-models.html)
+  - [Conceptual understanding](http://mfviz.com/hierarchical-models/)
+  - [Logistic regression](http://www.karlin.mff.cuni.cz/~pesta/NMFM404/mixed.html)
+  - [Specifying random effects](http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#model-specification)
+:::
+:::
+
+---
+
+## {background-image="https://raw.githubusercontent.com/jvcasillas/media/master/rstats/memes/rstats_stackoverflow.png" background-size="700px"}
+
+---
+
+## {background-image="./index_files/img/chatgpt.png" background-size="contain"}
+
+---
+
+## {.final visibility="uncounted"}
+
+![](https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/164.png){.absolute top="5" right="0" width="55" height="55"}
+
+::: {.p-font .emph style="font-size: 1.5em;"}
+Data Science for Linguists 
+:::
+
+</br>
+
+### [www.ds4ling.jvcasillas.com]{style="color: #fff;"}
+
+### Save the link to the website for future reference
+
+</br>
+
+|                                                                            |                             |
+| -------------------------------------------------------------------------: | :-------------------------- |
+| <a href='mailto:joseph.casillas@rutgers.edu'>{{< fa solid envelope >}}</a> | [joseph.casillas@rutgers.edu]{.emph} |
+| <a href='https://twitter.com/jvcasill'>{{< fa brands twitter >}}</a>       | [\@jvcasill]{.emph}                   |
+| <a href='https://github.com/jvcasillas'>{{< fa brands github >}}</a>       | [\@jvcasillas]{.emph}                 |
+
+: {tbl-colwidths="[25,75]"}
+
+
+# [References]{.emph} {.final}
+
+::: {#refs}
+:::

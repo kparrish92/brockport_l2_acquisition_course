@@ -1,0 +1,2987 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="index_files/libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="index_files/libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<link href="index_files/libs/quarto-contrib/tachyonsextra-0.0.1/tachyonsextra.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
+
+  <meta name="author" content="Joseph V. Casillas, PhD">
+  <title>Data Science for Linguists</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-0b6b91b2de75f5d35ca427df115379fc.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="index_files/libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="index_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <img width="150" src="https://github.com/jvcasillas/ru_xaringan/raw/master/img/logo/ru_new.png">
+  <h1 class="title">Data Science for Linguists</h1>
+  <h3 class="subtitle">The linear model: <span style="color: #888; font-size: 0.9em;">Multiple regression</span></h3>
+  <p class="author">Joseph V. Casillas, PhD</p>
+  <p class="institute">Rutgers University<mybr>Spring 2025<br>Last update: 2025-03-22</mybr></p>
+</section>
+<section id="section" class="title-slide slide level1 transition center" data-visibility="uncounted">
+<h1></h1>
+<p></p><div id="tweet-55125"></div><script>tweet={"url":"https:\/\/twitter.com\/AndrewsNotFunny\/status\/1365382679877812224","author_name":"andrew","author_url":"https:\/\/twitter.com\/AndrewsNotFunny","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003Ey=mx+b jokes are great but at some point we&#39;ll have to draw the line\u003C\/p\u003E&mdash; andrew (@AndrewsNotFunny) \u003Ca href=\"https:\/\/twitter.com\/AndrewsNotFunny\/status\/1365382679877812224?ref_src=twsrc%5Etfw\"\u003EFebruary 26, 2021\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-55125").innerHTML = tweet["html"];</script><p></p>
+<!-- regression the movie tweet -->
+</section>
+
+<section>
+<section id="multiple-regression-and-correlation" class="title-slide slide level1 transition center" data-visibility="uncounted">
+<h1>Multiple regression and correlation</h1>
+
+</section>
+<section id="mrc" class="slide level2" data-menu-title="Multiple causation">
+<h2>MRC</h2>
+<h3 id="multiple-causation">Multiple Causation</h3>
+<div class="closelist">
+<ul>
+<li>In nature: a phenomenon may have more than a single cause</li>
+<li>In statistics: criterion variable might have more than a single relevant predictor</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Leaving a potential cause out of the equation would constitute “omitting a relevant variable”
+<ul>
+<li>This biases the parameter estimates for the other predictors</li>
+<li>We are not always sure of what those other predictors might be!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="mrc-1" class="slide level2 smaller" data-menu-title="Overview">
+<h2>MRC</h2>
+<h3 id="overview">Overview</h3>
+<div class="closelist">
+<ul>
+<li>We have specified a linear formula that can account for the relationship between two continuous variables.</li>
+</ul>
+<div class="box-note">
+<p><span class="math display">\[Y = a + bX + e\]</span></p>
+</div>
+<ul>
+<li>It is uncommon for a given response variable to be determined by a single predictor</li>
+<li>Most theories/models in social science predict complex relationships between multiple predictors.
+<ul>
+<li>Score ~ SES + IQ</li>
+<li>Duration ~ speech rate + number of syllables</li>
+<li>RT ~ working memory + word position</li>
+</ul></li>
+<li>We can extend the linear model equation to account for multiple predictors.</li>
+</ul>
+</div>
+</section>
+<section id="section-1" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Overview</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>We want to construct the equivalent of an <span class="emph"><strong>OR</strong></span> statement or a <em>logical disjunction</em></li>
+<li>Boolean Algebra tells us that an <span class="emph"><strong>OR</strong></span> statement implies <em>summing things</em></li>
+<li>In other words, all X’s do not have to be high at once to have an effect on Y</li>
+<li>For example, you can get an overall high GRE score by scoring high in verbal but (somewhat) low in math:
+<ul>
+<li>They have to have a high total (or sum)</li>
+<li>A sum is implicitly an <span class="emph"><strong>OR</strong></span> statement</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:20%;">
+
+</div><div class="column" style="width:30%;">
+<center>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A<br>(x)</th>
+<th style="text-align: center;">B<br>(y)</th>
+<th style="text-align: center;">C<br>(x <span class="emph"><strong>∨</strong></span> y)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="emph"><strong>0</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+If A = 1<br>
+<span class="emph"><strong>OR</strong></span><br>
+B = 1,<br>
+then C = 1<br>
+Otherwise, C = 0
+</center>
+</div></div>
+</section>
+<section id="section-2" class="slide level2" data-background-image="https://www.jvcasillas.com/media/rstats/memes/lm_additive_effects.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-3" class="slide level2" data-background-image="../../assets/img/pensar2.png" data-background-position="95% 50%" data-background-size="500px">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Overview</span></p>
+<ul>
+<li>What if we based linguistics Grad School<br>
+acceptances solely on GRE scores?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>One shouldn’t have to score high on all of<br>
+the entrance requirements, but just rank<br>
+high on the sum of all of them</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>We could use a weighted sum</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Overview</span></p>
+<p><strong>Weighted sum</strong></p>
+<div class="closelist">
+<ul>
+<li>Some things are more important than others in this overall sum</li>
+<li>For example, GRE is actually a poor predictor of graduate student success</li>
+<li>So we might want to weight this variable lower than something like GPA or letters of recommendation</li>
+<li>We can use least squares estimation to get the b-weights with the lowest SS<sub>ERROR</sub></li>
+</ul>
+</div>
+</section>
+<section id="mrc-2" class="slide level2 smaller" data-menu-title="The equation">
+<h2>MRC</h2>
+<h3 id="the-equation">The equation</h3>
+<div class="columns">
+<div class="column">
+<div class="box-note">
+<p><span class="math display">\[Y = a + bX + e\]</span></p>
+</div>
+</div><div class="column">
+<div class="box-error">
+<p><span class="math display">\[Y = a_{0} + b_{1}X_{1}  + b_{2}X_{2} {...} b_{k}X_{k} + e\]</span></p>
+</div>
+</div></div>
+<p><br></p>
+<div class="fragment">
+<h3 id="least-squares-estimation">Least Squares Estimation</h3>
+<ul>
+<li>R will estimate the b-weights that minimize the sum of the squared errors (🙅 by hand examples)</li>
+<li>Ideally these are the b-weights that best represent how much each predictor is really contributing to the variance in the criterion variable (y)</li>
+<li>We will again use least squares estimation to achieve the best (optimal) regression weights</li>
+</ul>
+</div>
+</section>
+<section id="mrc-3" class="slide level2" data-menu-title="Multiple predictors">
+<h2>MRC</h2>
+<h3 id="multiple-predictors">Multiple predictors</h3>
+<div style="font-size: 0.9em;">
+<ul>
+<li>The multiple predictors represent different hypotheses regarding what might be affecting the criterion variable</li>
+<li>In other words, multiple regression is just creating a sum of weighted predictors to explain the total variance in the criterion variable</li>
+<li>The way that the predictors function together is not necessarily the same as the way that they each function alone</li>
+<li>Bivariate regression is just a degenerate form (“special case”) of multiple regression containing only one predictor</li>
+</ul>
+</div>
+</section>
+<section id="mrc-4" class="slide level2" data-menu-title="Interpretation">
+<h2>MRC</h2>
+<h3 id="interpretation">Interpretation</h3>
+<h4 id="summarizing-so-far">Summarizing so far…</h4>
+<div style="font-size: 0.9em;">
+<ul>
+<li>In multiple regression we assume additivity and linearity</li>
+<li>In Boolean Algebra, a sum (addition) represents a logical disjunction</li>
+<li>The multiple regression “weighted sum” is a complex <span class="emph"><strong>OR</strong></span> statement</li>
+</ul>
+</div>
+<p><br></p>
+<p><span class="fragment p-font" style="color: #666666;">What does this mean for our parameter estimates and how do we interpret them?</span></p>
+</section>
+<section id="mrc-5" class="slide level2" data-menu-title="(Semi)partial betas">
+<h2>MRC</h2>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">(Semi)partial betas</span></p>
+<ul>
+<li><span class="emph">Intercept</span> ( <span class="math inline">\(a_{0}\)</span> ): the value of the criterion variable when all predictors are equal to 0 (same as bivariate regression)</li>
+<li><span class="emph">Slope</span> ( <span class="math inline">\(b_{k}\)</span> ): the change in the criterion associated with a 1-unit change in <span class="math inline">\(X_k\)</span>… <span class="fragment"><em>with all other predictors held constant</em></span></li>
+</ul>
+<div class="fragment">
+<p><br></p>
+<h3 id="how-can-we-calculate-the-unique-contribution-of-each-predictor">How can we calculate the unique contribution of each predictor?</h3>
+</div>
+</section>
+<section id="section-4" class="slide level2" data-background-image="./index_files/img/ballentine1.png" data-background-size="contain" data-background-position="125% 50%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+</section>
+<section id="section-5" class="slide level2" data-background-image="./index_files/img/ballentine2.png" data-background-size="contain" data-background-position="125% 50%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<div class="fragment">
+<p><span style="font-size: 0.85em;">Recall that the b-weight <br>of the bivariate model is <span class="math inline">\(r(\frac{s_y}{s_x})\)</span></span></p>
+</div>
+</section>
+<section id="section-6" class="slide level2" data-background-image="./index_files/img/ballentine3.png" data-background-size="contain" data-background-position="125% 50%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+</section>
+<section id="section-7" class="slide level2" data-background-image="./index_files/img/ballentine4a.png" data-background-size="contain" data-background-position="125% 50%" data-menu-title="The Ballantine">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<h3 id="the-ballantine">The “Ballantine”</h3>
+<p><span style="font-size: 0.8em;"><span class="citation" data-cites="cohen_1975">Cohen &amp; Cohen (<a href="#/references" role="doc-biblioref" onclick="">1975</a>)</span></span></p>
+</section>
+<section id="section-8" class="slide level2" data-background-image="./index_files/img/ballentine4b.png" data-background-size="contain" data-background-position="125% 50%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<div style="font-size: 0.85em;">
+<ul>
+<li class="fragment"><span class="math inline">\(r^{2}_{x1,x2} = c + d\)</span></li>
+<li class="fragment"><span class="math inline">\(r^{2}_{y,x1} = a + c\)</span></li>
+<li class="fragment"><span class="math inline">\(r^{2}_{y,x2} = b + c\)</span></li>
+<li class="fragment"><span class="math inline">\(R^{2}_{y,x1,x2} = a + b + c\)</span></li>
+</ul>
+</div>
+</section>
+<section id="section-9" class="slide level2 smaller" data-background-image="./index_files/img/ballentine5.png" data-background-size="contain" data-background-position="125% 50%" data-menu-title="Squared semipartial correlation">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Squared semipartial correlation</span></p>
+<div style="font-size: 0.85em;">
+<ul>
+<li class="fragment"><span class="math inline">\(X_2\)</span> removed from <em>explained</em><br>
+variance</li>
+<li class="fragment">Represents unique contribution<br>
+of <span class="math inline">\(X_1\)</span></li>
+<li class="fragment"><span class="math inline">\(sr^2 = R^{2}_{y,x1,x2} - r^{2}_{y,x2}\)</span></li>
+</ul>
+</div>
+</section>
+<section id="section-10" class="slide level2 smaller" data-background-image="./index_files/img/ballentine7.png" data-background-size="contain" data-background-position="125% 50%" data-menu-title="Squared partial correlation">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Squared partial<br>correlation</span></p>
+<div style="font-size: 0.85em;">
+<ul>
+<li class="fragment">Y variance not accounted for by<br>
+<span class="math inline">\(X_2\)</span> is the area of A + E</li>
+<li class="fragment">The area explained by <span class="math inline">\(X_1\)</span> = A<br>
+(squared semipartial correlation)</li>
+<li class="fragment">Unqiue contribution of <span class="math inline">\(X_1\)</span> is<br>
+<span class="math inline">\(A / (A + E)\)</span> or…</li>
+<li class="fragment"><span class="math inline">\(pr^{2}_{x1} = \frac{A}{A + E}\)</span></li>
+<li class="fragment">We are pretending that <span class="math inline">\(X_2\)</span><br>
+doesn’t exist (statistically)</li>
+</ul>
+</div>
+</section>
+<section id="section-11" class="slide level2 smaller" data-background-image="./index_files/img/ballentine4b.png" data-background-size="350px" data-background-position="95% 20%" data-menu-title="Statistical control">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Statistical control<sup>1</sup></span></p>
+<ul>
+<li>Not the same as <span style="color: green;">experimental control</span>
+<ul>
+<li>We are interested in some treatment</li>
+<li>Some participants receive treatment, some do not</li>
+<li><em>Only</em> looking at highly proficient bilinguals (not low, med. prof.)</li>
+</ul></li>
+<li>We partial out the effects of predictor <span class="math inline">\(X_1\)</span> from all other predictors and use this error to determine <span class="math inline">\(b_1\)</span></li>
+<li>We are estimating the effect of one predictor while holding the other predictors constant</li>
+<li>This will only work if predictors are not correlated (i.e., there <em>cannot</em> be multicollinearity)</li>
+</ul>
+
+<aside><div>
+<p><sup>1</sup>This is a poor choice for a name. Ask why.</p>
+</div></aside></section>
+<section id="section-12" class="slide level2" data-background-image="https://i.imgflip.com/25dwia.jpg" data-background-position="90% 50%" data-background-size="650px" data-menu-title="Conceptual understanding">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Conceptual understanding</span></p>
+<div class="columns">
+<div class="column">
+<div style="font-size: 0.85em;">
+<ul>
+<li>MRC is much more difficult to conceptualize than the bivariate linear regression</li>
+<li>If we consider a simple three variable model (y ~ x<sub>1</sub> + x<sub>2</sub>) we are fitting a hyperplane to a three dimensional space</li>
+<li>More variables = more complexity</li>
+</ul>
+</div>
+</div></div>
+<!-- complex math meme "my model has more than two variables" -->
+</section>
+<section id="section-13" class="slide level2 center">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+
+<img data-src="index_files/figure-revealjs/additive_plots-1.png" class="img-fluid quarto-figure quarto-figure-center r-stretch" width="3000"><div class="fragment">
+<center>
+<span class="emph">mpg ~ wt</span> &amp; <span style="color: blue;">mpg ~ drat</span><br>
+!=<br>
+MRC
+</center>
+<div class="footer">
+<p><a href="https://www.ds4ling.jvcasillas.com/slides/05_lm/03_mrc/index_files/html/threejs1.html">3d viz</a></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_3d-ls-1.png" class="img-fluid quarto-figure quarto-figure-center" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_3d-rs-1.png" class="img-fluid quarto-figure quarto-figure-center" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_3d_surface-ls-1.png" class="img-fluid quarto-figure quarto-figure-center" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_3d_surface-rs-1.png" class="img-fluid quarto-figure quarto-figure-center" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-14" class="slide level2" data-background-image="./index_files/img/additive_3d_corner.png" data-background-size="contain">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+</section>
+<section id="section-15" class="slide level2 smaller" data-menu-title="MRC in R">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<h3 id="doing-it-in-r">Doing it in R</h3>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ wt + drat, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.4159 -2.0452  0.0136  1.7704  6.7466 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   30.290      7.318   4.139 0.000274 ***
+wt            -4.783      0.797  -6.001 1.59e-06 ***
+drat           1.442      1.459   0.989 0.330854    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.047 on 29 degrees of freedom
+Multiple R-squared:  0.7609,    Adjusted R-squared:  0.7444 
+F-statistic: 46.14 on 2 and 29 DF,  p-value: 9.761e-10</code></pre>
+</div>
+</div>
+</div><div class="column">
+<p><span class="math display">\[mpg_{i} \sim \beta_{0} + \beta_{1}wt_{i} + \beta_{2}drat_{i} + \epsilon_{i}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> drat, <span class="at">data =</span> mtcars)</span>
+<span id="cb2-2"><a href=""></a><span class="fu">summary</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</section>
+<section id="section-16" class="slide level2 smaller" data-menu-title="CIs and significance tests">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<h3 id="cis-and-significance-tests">CIs and significance tests</h3>
+<p><mybr></mybr></p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table" data-quarto-postprocess="true" style="font-size: 28px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">SE</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">95% LB</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">95% UB</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t-ratio</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">30.29</td>
+<td style="text-align: right;">7.32</td>
+<td style="text-align: right;">15.32</td>
+<td style="text-align: right;">45.26</td>
+<td style="text-align: right;">4.14</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">wt</td>
+<td style="text-align: right;">-4.78</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">-6.41</td>
+<td style="text-align: right;">-3.15</td>
+<td style="text-align: right;">-6.00</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">drat</td>
+<td style="text-align: right;">1.44</td>
+<td style="text-align: right;">1.46</td>
+<td style="text-align: right;">-1.54</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p><br></p>
+<div>
+<ul>
+<li class="fragment">Same as bivariate case, but we adjust t-value for k (added estimated parameters)</li>
+<li class="fragment">Statistical significance implies that the 95% CI doesn’t contain 0</li>
+<li class="fragment"><span class="emph"><strong>Rule of thumb</strong></span>: multiply SE of b-weight by 2 and add/subtract to/from b-weight</li>
+<li class="fragment">T-ratio: Parameter estimate divided by SE<br>
+<span class="fragment">(i.e., 30.29 / 7.32 = 4.14)</span></li>
+<li class="fragment"><span class="emph"><strong>Rule of thumb</strong></span>: |t| &gt; 2 = significant<sup>™</sup></li>
+</ul>
+</div>
+</section>
+<section id="section-17" class="slide level2 smaller" data-menu-title="R<sup>2</sup>">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<h3 id="coefficient-of-multiple-determination-r2">Coefficient of multiple determination: R<sup>2</sup></h3>
+<ul>
+<li>Adding variables will always explain more variance</li>
+<li>Not necessarily better</li>
+<li>There is an adjustment for exhausting degrees of freedom</li>
+</ul>
+<div class="fragment">
+<h3 id="note">Note</h3>
+<ul>
+<li><span style="color: green;">r</span>: pearson product moment correlation</li>
+<li><span style="color: purple;">r<sup>2</sup></span>: coefficient of determination; variance explained (bivariate case)</li>
+<li><span class="emph">R<sup>2</sup></span>: coefficient of multiple determination; variance explained (MRC)</li>
+</ul>
+</div>
+</section>
+<section id="section-18" class="slide level2 smaller" data-menu-title="Making predictions">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">MRC</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Making predictions</span></p>
+<ul>
+<li>Recall the multiple regression equation…</li>
+</ul>
+<p><span class="math display">\[Y = a_{0} + b_{1}X_{1}  + b_{2}X_{2} {...} b_{k}X_{k} + e\]</span></p>
+<ul>
+<li>Our <code>mtcars</code> model can be summarized as…</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{mpg} &amp;= 30.29 + -4.78(wt) + 1.44(drat)
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<div class="fragment" style="font-size: 0.85em;">
+<p>What is the predicted <code>mpg</code> for a car that weighs 1 unit with a rear axel ratio (drat) of 2?<br>
+And one that weighs 1 with a drat of 4?<br>
+And one that weighs 3 with a drat of 2.5?</p>
+</div>
+</div><div class="column">
+<div class="fragment" style="font-size: 0.85em;">
+<ul>
+<li>28.39 <span class="math inline">\(mpg = 30.29 + -4.78 \times 1 + 1.44 \times 2\)</span></li>
+<li>31.28 <span class="math inline">\(mpg = 30.29 + -4.78 \times 1 + 1.44 \times 4\)</span></li>
+<li>19.55 <span class="math inline">\(mpg = 30.29 + -4.78 \times 3 + 1.44 \times 2.5\)</span></li>
+</ul>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="interactions" class="title-slide slide level1 transition center">
+<h1>Interactions</h1>
+
+</section>
+<section id="section-19" class="slide level2 smaller" data-menu-title="Review">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Recall</span></p>
+<div class="columns">
+<div class="column">
+<div style="font-size: 0.8em;">
+<ul>
+<li>Assumptions of Multiple Regression:
+<ul>
+<li>Additivity</li>
+<li>Linearity</li>
+</ul></li>
+<li>In Boolean Algebra, a sum (addition) represents a logical disjunction:
+<ul>
+<li>Multiple regression “weighted sum” is a complex “OR” statement</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column">
+<center>
+<div style="font-size: 0.8em;">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A<br>(x)</th>
+<th style="text-align: center;">B<br>(y)</th>
+<th style="text-align: center;">C<br>(x <span class="emph"><strong>∨</strong></span> y)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="emph"><strong>0</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+</tr>
+</tbody>
+</table>
+<p>If A = 1<br>
+<span class="emph"><strong>OR</strong></span><br>
+B = 1,<br>
+then C = 1<br>
+Otherwise, C = 0</p>
+</div>
+</center>
+</div></div>
+</section>
+<section id="section-20" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Recall</span></p>
+<div class="columns">
+<div class="column">
+<div style="font-size: 0.8em;">
+<ul>
+<li>Assumptions of Multiple Regression:
+<ul>
+<li>Additivity</li>
+<li>Linearity</li>
+</ul></li>
+<li>In Boolean Algebra, a sum (addition) represents a logical <span style="color: blue;">disjunction</span>:
+<ul>
+<li>Multiple regression “weighted sum” is a complex “OR” statement</li>
+</ul></li>
+</ul>
+</div>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Non-Additivity: Interaction Terms</span></p>
+<div style="font-size: 0.8em;">
+<ul>
+<li>In Boolean Algebra, a product (multiplication) represents a logical <span class="emph"><strong>conjunction</strong></span>:
+<ul>
+<li>Interaction terms represent “AND” terms</li>
+<li>These are included within the overall “OR” statement</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column">
+<center>
+<div style="font-size: 0.8em;">
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 41%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A<br>(x)</th>
+<th style="text-align: center;">B<br>(y)</th>
+<th style="text-align: center;">C<br>(x <span class="emph"><strong>∧</strong></span> y)</th>
+<th style="text-align: center;"><br><span style="color: grey;">(x ∨ y)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="emph"><strong>0</strong></span></td>
+<td style="text-align: center;"><span style="color: #666666;">0</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="emph"><strong>0</strong></span></td>
+<td style="text-align: center;"><span style="color: #666666;">1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="emph"><strong>0</strong></span></td>
+<td style="text-align: center;"><span style="color: #666666;">1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="emph"><strong>1</strong></span></td>
+<td style="text-align: center;"><span style="color: #666666;">1</span></td>
+</tr>
+</tbody>
+</table>
+<p>If A = 1<br>
+<span class="emph"><strong>AND</strong></span><br>
+B = 1,<br>
+then C = 1<br>
+Otherwise, C = 0</p>
+</div>
+</center>
+</div></div>
+</section>
+<section id="section-21" class="slide level2 smaller" data-menu-title="Genetics, drugs, and alcohol">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<div class="columns">
+<div class="column">
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Genetics example</span></p>
+<div style="font-size: 0.8em;">
+<ul>
+<li>You share 50% of genes with your Mom (M) and 50% with your Dad (D)</li>
+<li>But your parents don’t share that many genes</li>
+<li>M and D are generally not genetically correlated with each other, but you (the M*D interaction) are correlated with both M and D (more on this later)</li>
+</ul>
+</div>
+</div><div class="column fragment">
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Drugs and alcohol</span></p>
+<div style="font-size: 0.8em;">
+<p>Consider taking the upcoming midterm in one of the following conditions</p>
+<ul>
+<li>Neither Drugs nor Alcohol:
+<ul>
+<li>probably best, produce highest score</li>
+</ul></li>
+<li>Alcohol alone:
+<ul>
+<li>Probably lower midterm scores than doing neither</li>
+</ul></li>
+<li>Drugs alone:
+<ul>
+<li>Probably lower midterm scores than doing neither</li>
+</ul></li>
+<li>Alcohol and Drugs together:
+<ul>
+<li>Probably lowest scores on the midterm exam of all the four possible conditions</li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="section-22" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Drugs and alcohol continued</span></p>
+<ul>
+<li>Is the effect of alcohol and drugs together equal to the negative effect of alcohol PLUS the negative effect of drugs?
+<ul>
+<li>Probably not</li>
+<li>Alcohol and drugs are known to interact</li>
+</ul></li>
+<li>This effect is a negative interaction</li>
+<li>If you mix alcohol and drugs they have a larger combined effect than adding up the effects of each acting separately:
+<ul>
+<li>For example, if alcohol makes your score drop 10 points, and the drug drops it 15 points, when you take both your score will very likely drop more than just 25 points</li>
+</ul></li>
+<li>This effect is not additive, it is multiplicative</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Non-additivity of effects</span></p>
+<div style="font-size: 0.8em;">
+<ul>
+<li>You cannot add the effect of alcohol to the effect of drugs to predict the effect “alcohol <em>AND</em> drugs”</li>
+<li>Because you get an extra effect (a boosting effect) by combing them</li>
+<li>There is a synergistic effect of combining the terms</li>
+<li>In principle, could be either more or less effective</li>
+<li>You include this multiplicative <span class="emph"><strong>AND</strong></span> term (A*D) in <em>ADDITION</em> to the other terms in the model</li>
+</ul>
+</div>
+</section>
+<section id="section-23" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<div class="columns">
+<div class="column">
+<p><br></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">The multiple regression formula:</span></p>
+<div style="font-size: 0.85em;">
+<p><span class="math inline">\(Y = a_{0} + b_{1}X_{1} + b_{2}X_{2} + (b_{1}X_{1} \times b_{2}X_{2}) + e\)</span></p>
+</div>
+<p><br></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Including interactions in R</span></p>
+<ul>
+<li>We do this using <span class="emph">:</span></li>
+<li>Or <span class="emph">*</span></li>
+</ul>
+</div><div class="column fragment">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> drat <span class="sc">+</span> wt<span class="sc">:</span>drat, <span class="at">data =</span> mtcars) </span>
+<span id="cb3-2"><a href=""></a><span class="fu">summary</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ wt + drat + wt:drat, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.8913 -1.8634 -0.3398  1.3247  6.4730 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)    5.550     12.631   0.439   0.6637  
+wt             3.884      3.798   1.023   0.3153  
+drat           8.494      3.321   2.557   0.0162 *
+wt:drat       -2.543      1.093  -2.327   0.0274 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.839 on 28 degrees of freedom
+Multiple R-squared:  0.7996,    Adjusted R-squared:  0.7782 
+F-statistic: 37.25 on 3 and 28 DF,  p-value: 6.567e-10</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<h3 id="visualization">Visualization</h3>
+<ul>
+<li>Including an interaction affects the hyperplane fit to the data</li>
+</ul>
+</section>
+<section id="section-24" class="slide level2" data-background-color="black">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction-l-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction-r-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction2-l-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction2-r-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-25" class="slide level2" data-background-color="black">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction3-l-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction3-r-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">Interactions</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction4-l-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/additive_interaction4-r-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="section-26" class="title-slide slide level1 smaller center" data-background-color="#cc0033" data-menu-title="Interim summary">
+<h1></h1>
+
+</section>
+<h3 id="review"><span class="p-font" style="font-size: 1.75em; color: #ffffff;">Review</span></h3>
+<p><br><br></p>
+<div class="columns">
+<div class="column">
+<h3 id="what-weve-seen-so-far"><span style="color: white;">What we’ve seen so far</span></h3>
+<ul>
+<li>Bivariate regression</li>
+<li>MRC</li>
+<li>Additive effects</li>
+<li>Interactions<br>
+(multiplicative effects)</li>
+</ul>
+</div><div class="column">
+<h3 id="whats-left"><span style="color: white;">What’s left</span></h3>
+<ul>
+<li>Assumptions</li>
+<li>Model specification</li>
+<li>Alpha slippage</li>
+<li>Empirical selection of variables</li>
+<li>Reporting results</li>
+</ul>
+</div>
+</div></section>
+<section>
+<section id="assumptions-revisited" class="title-slide slide level1 center" data-background-image="https://raw.githubusercontent.com/jvcasillas/media/master/rstats/memes/lm_ballantine.png" data-background-size="contain" data-background-position="100% 50%" data-background-color="#272822" data-visibility="uncounted">
+<h1>Assumptions<br>(revisited)</h1>
+
+</section>
+<section id="a-new-assumption" class="slide level2 smaller" data-background-image="./index_files/img/ballentine4b.png, ./index_files/img/ballentine8.png" data-background-size="650px, 650px" data-background-position="25% 90%, 75% 90%" data-menu-title="Multicollinearity">
+<h2>A new assumption</h2>
+<h3 id="multicollinearity">Multicollinearity</h3>
+<ul>
+<li>Multicollinearity occurs when the predictors are correlated
+<ul>
+<li>height (x<sub>1</sub>) and weight (x<sub>2</sub>)</li>
+<li>intelligence (x<sub>1</sub>) and creativity (x<sub>2</sub>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-27" class="slide level2 smaller" data-background-image="./index_files/img/ballentine4b.png, ./index_files/img/ballentine8.png" data-background-size="600px, 600px" data-background-position="95% 10%, 95% 90%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">A new assumption</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Multicollinearity</span></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Why is it a problem?
+<ul>
+<li>“Confounds” produce ambiguity of causal inference</li>
+</ul></li>
+<li>Least Squares Estimation in Linear Model:
+<ul>
+<li>Simultaneous estimation of additive effects of all model predictors</li>
+<li>Does not adequately partition variance among correlated predictors</li>
+</ul></li>
+<li>Least squares estimation is not adequate for dealing with multicollinearity
+<ul>
+<li>works best when predictors are uncorrelated</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="section-28" class="slide level2" data-menu-title="Shiny app: Multicollinearity in MRC" data-background-iframe="https://gallery.shinyapps.io/collinearity/" data-background-interactive="TRUE">
+<h2></h2>
+<aside class="notes">
+<p><a href="https://gallery.shinyapps.io/collinearity/" class="uri">https://gallery.shinyapps.io/collinearity/</a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Multicollinearity in multiple regression -->
+</section>
+<section id="old-assumptions-revisited" class="slide level2 smaller">
+<h2>Old assumptions revisited</h2>
+<h3 id="model-specification-errors">Model specification errors</h3>
+<h4 id="avoid-excluding-relevant-variables"><span style="color: black;">Avoid excluding relevant variables</span></h4>
+<div>
+<ul>
+<li class="fragment">Use Multiple Working Hypotheses</li>
+<li class="fragment">This is how you safeguard against leaving out a variable that you might need later</li>
+<li class="fragment">But don’t put in everything but the kitchen sink…<span class="fragment">you also must avoid including irrelevant variables</span></li>
+<li class="fragment">Ideally you want to use plausible rival hypotheses</li>
+<li class="fragment">You need to have some theory behind your reasoning</li>
+<li class="fragment">Assuming you have done all of this, we need to figure out which predictors are relevant and which are not relevant</li>
+<li class="fragment">This is not nearly as a big of a problem as having excluded a relevant variable</li>
+</ul>
+</div>
+</section>
+<section id="section-29" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">How useful is the model output?</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Traditional t-test to determine if the b = 0</span></p>
+<div class="closelist">
+<ul>
+<li>Take b-weight, compute standard error</li>
+<li>Use SE<sub>b</sub> and the b-weight and construct a t-ratio:</li>
+</ul>
+<p><span class="math display">\[t_{b} = \frac{b}{SE_{b}}\]</span></p>
+<ul>
+<li>Theoretically this informs us of whether b = 0 or not</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Problem</span></p>
+<div class="closelist">
+<ul>
+<li>The b-weights and the SE of the b-weight are both critically dependent on the model being correctly specified!</li>
+<li>If you made either kind of model specification error, the parameter estimates are invalid
+<ul>
+<li>The b-weights might have changed if you omitted a relevant variable</li>
+<li>The SE of the b-weights will have changed (increased) if you included an irrelevant variable</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-30" class="slide level2 smaller" data-background-image="../../assets/img/frustracion.jpg" data-background-position="95% 20%" data-background-size="350px">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">How useful is the model output?</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">Your t-tests might not be informative</span></p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li class="fragment">If the model is not correctly specified then it is based on incorrect values of either b or SE<sub>b</sub> or both</li>
+<li class="fragment">If you knew the model was correctly specified then you would have no need to use the t-tests in the first place</li>
+<li class="fragment">You only need to use them if you’re unsure whether the model is correctly specified</li>
+<li class="fragment">So the only conditions in which the tests are useful are the conditions in which they may be invalid!</li>
+<li class="fragment">But you only test this if you are questioning the specification of the model</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">How do you deal with this?</span></p>
+<div class="note">
+<p>Hierarchical partitioning of variance through nested model comparisons</p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="hierarchical-partitioning-of-variance" class="title-slide slide level1 transition center" data-visibility="uncounted">
+<h1>Hierarchical Partitioning of Variance</h1>
+
+</section>
+<section id="hierarchical-partitioning-of-variance-1" class="slide level2" data-menu-title="Nested model comparisons" data-background-image="./index_files/img/turtles.png" data-background-position="90% 50%" data-background-size="500px">
+<h2>Hierarchical Partitioning of Variance</h2>
+<h3 id="nested-model-comparisons">Nested model comparisons</h3>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Comparison of “hierarchically nested” multiple regression models</li>
+<li>Requires theoretical specification and causal ordering of predictors</li>
+</ul>
+</div></div>
+</section>
+<section id="nested-model-comparisons-1" class="slide level2" data-menu-title="What is a nested model?" data-background-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvWty12X7seRPCGTHaZRccZNzwuoRHfxSGrHdjz69zugf5Ux6c01Mhp07bRjgxzghwTJA&amp;usqp=CAU" data-background-position="50% 95%" data-background-size="550px">
+<h2>Nested model comparisons</h2>
+<h3 id="what-is-a-nested-model">What is a nested model?</h3>
+<div class="box-note">
+<p>A nested model is when one model is nested inside the other such that there is a more inclusive model that contains more parameters and a less inclusive model (restricted model) that contains just a subset of specific variables you would like to test</p>
+</div>
+</section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<p><span class="p-font" style="font-size: 1.2em; color: #666666;">What is a nested model?</span></p>
+<div class="closelist" style="font-size: 0.85em;">
+<ul>
+<li>In nested model comparisons, you are testing whether those parameters not in the restricted model can be eliminated:
+<ul>
+<li>You want to see if those parameters not in the restricted models can be set to 0</li>
+<li>You want to see if these extra parameters are needed or if they can be taken out</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="emph p-font" style="font-size: 1.2em; color: #666666;">How</span></p>
+<ul>
+<li>Test a more complicated model and then a less complicated one</li>
+</ul>
+</div>
+</section>
+<section id="section-32" class="slide level2" data-menu-title="Comparing nested models">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<h3 id="comparing-nested-models">Comparing nested models</h3>
+<div class="closelist">
+<ul>
+<li>You often cannot compare two different restricted models directly</li>
+<li>If the models do not overlap they cannot be directly compared</li>
+<li>You must construct an inclusive model such that both restricted models are nested within a common inclusive model</li>
+<li>Then, to do the nested model comparisons you run the alternative restricted models and test each against the same inclusive model</li>
+</ul>
+</div>
+</section>
+<section id="section-33" class="slide level2 smaller" data-menu-title="The semipartial R<sup>2</sup>" data-background-image="./index_files/img/ballentine5.png" data-background-size="600px" data-background-position="95% 50%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<h3 id="the-semipartial-r2">The semipartial R<sup>2</sup></h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>The sr<sup>2</sup> doesn’t tell you if the predictor in question is statistically significant, but rather how to estimate the unique contributions of each variable</li>
+<li>We are attempting the elimination of irrelevant variables with this procedure:
+<ul>
+<li>We cannot address omission of a relevant variable this way (or in any other mathematical way because you cannot do math on variables that you didn’t measure in first place 🤦‍♀️)</li>
+<li>This method corrects Type I Errors only</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="section-34" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<p><br></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Inclusive Regression Model (R<sup>2</sup><sub>I</sub>):</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{1}x_{1} + b_{2}x_{2} + b_{3}x_{3} + e\]</span></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model (R<sup>2</sup><sub>R</sub>):</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{1}x_{1} + b_{2}x_{2} + e\]</span></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Nested Model Comparison:</span></p>
+<div class="box-error">
+<p><span class="math display">\[(R^2_{I} - R^2_{R}) = sr^2(y, x_{3} \times x_{1}, x_{2})\]</span></p>
+</div>
+</section>
+<section id="section-35" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons: (k<sub>I</sub> - k<sub>R</sub>) = 1</span></p>
+<p><br></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model 1:</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{1}x_{1} + b_{2}x_{2} + e\]</span></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model 2:</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{1}x_{1} + b_{3}x_{3} + e\]</span></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model 3:</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{2}x_{2} + b_{3}x_{3} + e\]</span></p>
+</section>
+<section id="section-36" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons: (k<sub>I</sub> - k<sub>R</sub>) = 2</span></p>
+<p><br></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model 4:</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{1}x_{1} + e\]</span></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model 5:</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{2}x_{2} + e\]</span></p>
+<p><span class="p-font" style="font-size: 1.4em; color: #666666;">Restricted Regression Model 6:</span></p>
+<p><span class="math display">\[\hat{y} = a + b_{3}x_{3} + e\]</span></p>
+</section>
+<section id="section-37" class="slide level2" data-background-image="./index_files/img/ballentine5.png" data-background-size="600px" data-background-position="95% 50%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<h3 id="how-do-we-test-semipartials">How do we test semipartials?</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: 0.85em;">
+<ul>
+<li>We will use a modification of the F-ratio (systematic variance over the error variance)</li>
+<li>F-ratio for sr<sup>2</sup> = the F-ratio for the hierarchical partitioning of variance using nested model comparisons</li>
+<li>The sr<sup>2</sup> of the variable of interest goes in the numerator</li>
+<li>The residual of the inclusive model goes in the denominator</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="section-38" class="slide level2 smaller" data-background-image="./index_files/img/ballentine4b.png, ./index_files/img/ballentine4c.png" data-background-size="600px, 600px" data-background-position="95% 10%, 95% 90%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<h3 id="the-semipartial-f-ratio">The semipartial F-Ratio</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="closelist">
+<ul>
+<li>This F-ratio is used like a “backward” traditional F-ratio:
+<ul>
+<li>It is a test of what you have eliminated to see if you can safely eliminate it</li>
+<li>You only eliminate variables if doing so does not result in a significant loss of explanatory power</li>
+</ul></li>
+</ul>
+</div>
+<p><br></p>
+<div class="closelist fragment">
+<ul>
+<li>It is not a test of whether what you have included is relevant:
+<ul>
+<li>It’s not what’s left in the model that is being tested</li>
+<li>It’s what’s not in the restrictive model that is being tested</li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="statistics-of-love-example" class="slide level2 smaller" data-background-color="#cc0033" data-background-image="./index_files/img/tinder.png" data-background-size="500px" data-background-position="90% 50%" data-menu-title="Ex: Statistics of love">
+<h2>Statistics of love example</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Imagine that you have a romantic partner that you are thinking of dumping</li>
+<li>It might be worthwhile to see if it is a good idea by doing the math first</li>
+<li>So you consider what your life is like with your partner (inclusive model) and subtract what it would be like without your partner (restricted model)</li>
+<li>If the answer is greater than zero, you might want to retain your partner</li>
+<li>If it is less than or equal to zero, you may safely dump your partner</li>
+</ul>
+</div></div>
+</section>
+<section id="stop-voicing-example" class="slide level2 smaller" data-background-image="./index_files/img/vot.png" data-background-size="800px" data-background-position="100% 50%" data-menu-title="Ex: stop voicing">
+<h2>Stop voicing example</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>Imagine you are looking at how skewness (x<sub>1</sub>) and kurtosis (x<sub>2</sub>) of coronal stop bursts can predict voice-onset time (y)</li>
+<li>You want to see if you can eliminate the kurtosis (x<sub>2</sub>) variable</li>
+<li>Your restricted model would be R<sup>2</sup> (y, x<sub>1</sub>) i.e., predicting VOT from skewness alone</li>
+<li>If the semipartial F-ratio is not statistically significant, then you can eliminate the kurtosis variable from the model</li>
+<li>If the F-ratio is significant, then you cannot eliminate that variable from the model</li>
+</ul>
+</div></div>
+</section>
+<section id="section-39" class="slide level2 smaller" data-background-image="./index_files/img/vot.png" data-background-size="800px" data-background-position="100% 50%">
+<h2></h2>
+<p><span class="p-font emph" style="font-size: 1.75em;">Stop voicing example (cont)</span></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>Suppose skewness and kurtosis can predict 40% of the variance in VOT</li>
+<li>If skewness alone can predict 38% of this, then:
+<ul>
+<li>The squared semipartial correlation of kurtosis is 40% - 38% = 2%</li>
+<li>Which is less than our total error variance because 1 - 40% = 60%</li>
+</ul></li>
+<li>Then skewness does just fine on its own predicting VOT and we can eliminate kurtosis as a predictor
+<ul>
+<li>Provided the F-ratio for the semipartial of kurtosis is not statistically significant</li>
+<li>This also may depend on sample size</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="section-40" class="slide level2 smaller" data-background-image="./index_files/img/vot.png" data-background-size="800px" data-background-position="100% 50%">
+<h2></h2>
+<p><span class="p-font emph" style="font-size: 1.75em;">Stop voicing example (cont)</span></p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>On the other hand, if skewness only accounts for say 10% of the variance
+<ul>
+<li>Then 40% - 10% = 30%</li>
+<li>Then kurtosis might still be important and we cannot eliminate it from the model due to a statistically significant semipartial F-ratio</li>
+</ul></li>
+<li>You are testing to see if skewness is strong enough to account for VOT in coronal stops without considering kurtosis</li>
+<li>You want a non-significant semipartial F- ratio if you want to eliminate any variable</li>
+</ul>
+</div></div>
+</section>
+<section id="nested-model-comparisons-2" class="slide level2" data-menu-title="Hierarchical tests of significance">
+<h2>Nested model comparisons</h2>
+<h3 id="hierarchical-tests-of-significance">Hierarchical tests of significance</h3>
+<p><span class="math display">\[F_{(\color{red}{k_{I}}-\color{blue}{k_{R}}),(n - \color{red}{k_{I}} - 1)} = \frac{(\color{red}{R^2_{I}} - \color{blue}{R^2_{R}}) / (\color{red}{k_{I}} - \color{blue}{k_{R}})}{(1 - \color{red}{R^2_{I}}) / (n - \color{red}{k_{I}} - 1)}\]</span></p>
+<div class="closelist" style="font-size: 0.9em;">
+<ul>
+<li class="fragment">R<sup>2</sup> = Squared multiple correlation</li>
+<li class="fragment">k = Model degrees of freedom (number of predictors)</li>
+<li class="fragment">n = Total sample size</li>
+<li class="fragment"><span class="emph">I</span> = <span class="emph">Inclusive Model</span> (Including All Predictors)</li>
+<li class="fragment"><span style="color: blue;">R</span> = <span style="color: blue;">Restricted Model</span> (Excluding Some Predictors)</li>
+<li class="fragment">(<span class="emph">R<sup>2</sup><sub>I</sub></span> – <span style="color: blue;">R<sup>2</sup><sub>R</sub></span>) = Squared Semipartial Correlation</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="p-font emph" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<div style="font-size: 0.9em;">
+<ul>
+<li>Results of hierarchical partitioning of variance and hierarchical tests of significance depend critically upon causal order specified among predictors:
+<ul>
+<li>There is no purely mathematical solution to this problem</li>
+<li>Causal ordering of predictors must be specified by theory</li>
+</ul></li>
+<li>Comparisons of hierarchically nested models permit testing of alternative hypotheses generated by rival causal theories</li>
+<li>A “confound” is just an alternative hypothesis towards which one has a negative attitude</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="p-font" style="font-size: 1.1em; color: #666666;">What about likelihood ratio tests?</span></p>
+</div>
+</section>
+<section id="nested-model-comparisons-3" class="slide level2 smaller" data-menu-title="Genetics example revisited">
+<h2>Nested model comparisons</h2>
+<h3 id="genetics-example-revisited">Genetics example revisited</h3>
+<div class="fragment">
+<ul>
+<li>You share 50% of genes with your Mom (M) and 50% with your Dad (D)</li>
+<li>But your parents don’t share that many genes</li>
+<li>M and D are generally not genetically correlated with each other, but you (the M*D interaction) are correlated with both M and D</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>So M and D are main (additive) effects and you are the M*D (multiplicative) interaction</li>
+<li>You are now correlated with both main effects</li>
+<li>This causes <em>multicollinearity</em></li>
+<li>M and D may then argue over this shared variance</li>
+<li>You have become a confound</li>
+</ul>
+</div>
+</section>
+<section id="nested-model-comparisons-4" class="slide level2 smaller" data-menu-title="Dealing with multicollinearity">
+<h2>Nested model comparisons</h2>
+<h3 id="dealing-with-multicollinearity">Dealing with multicollinearity</h3>
+<div>
+<ul>
+<li class="fragment">To test for the statistical significance of the interaction effect we use hierarchically nested model comparisons:
+<ul>
+<li class="fragment">This is a reasonable solution for the problem of multicollinearity</li>
+<li class="fragment">Interaction terms (nonadditivity) ALWAYS create multicollinearity</li>
+</ul></li>
+<li class="fragment">If the main effects are already correlated, the multicollinearity is worse:
+<ul>
+<li class="fragment">But you still get multicollinearity even if the component main effects are not correlated</li>
+</ul></li>
+<li class="fragment">The purely additive model (main effects only) is simpler than the multiplicative model (including the interaction):
+<ul>
+<li class="fragment">So if additive model is good enough then go with it (more parsimonious)</li>
+<li class="fragment">Leave out (eliminate) interaction effects first because they might be too confusing</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="nested-model-comparisons-5" class="slide level2" data-menu-title="Ex: MRC with three predictors">
+<h2>Nested model comparisons</h2>
+<h3 id="example-a-multiple-regression-with-three-predictors">Example: A multiple regression with three predictors</h3>
+<center>
+<code>y ~ a * b * c</code>
+</center>
+<div class="columns">
+<div class="column fragment">
+<div style="font-size: 0.7em;">
+<p><br><br> <strong>Main effects</strong>: a, b, and c<br>
+<strong>2-way interactions</strong>: a:b, a:c, and b:c<br>
+<strong>3-way interactions</strong>: a:b:c</p>
+<ul>
+<li class="fragment">Which terms get causal priority in the hierarchical partitioning of variance?</li>
+<li class="fragment">Main effects, then 2-way interactions, then 3-way interactions, etc.</li>
+</ul>
+</div>
+</div><div class="column fragment">
+<div style="font-size: 0.7em;">
+<p><br></p>
+<h3 id="it-is-more-parsimonious-to-use-the-main-effects">It is more parsimonious to use the main effects:</h3>
+<ul>
+<li>Fewer dfs are used and it is a less complicated model</li>
+<li>Using a linear additive model is generally the most parsimonious way to go</li>
+<li>Common variance should be given first to the main effects because they are conceptually more parsimonious</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="nested-model-comparisons-6" class="slide level2" data-menu-title="Lack of parsimony">
+<h2>Nested model comparisons</h2>
+<h3 id="lack-of-parsimony">Lack of parsimony</h3>
+<div style="font-size: 0.8em;">
+<ul>
+<li>If you use an interaction term (e.g., a*b), you are claiming that you need BOTH in order to have an effect
+<ul>
+<li>This is an extra substantive claim which needs to be supported</li>
+<li>It’s an <span class="emph"><strong>AND</strong></span> statement not an <span style="color: blue;">OR</span> statement, so it’s a bit riskier</li>
+</ul></li>
+<li>Inclusive model contains all interactions that you wish to test:
+<ul>
+<li>Then you use restricted models to test each interaction separately</li>
+</ul></li>
+<li>You can generate a ridiculous amount of hypotheses with a small number of variables and this might really compromise your model parsimony:
+<ul>
+<li>You need a theoretical reason to include an interaction term</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section-41" class="slide level2">
+<h2></h2>
+<p><span class="p-font emph" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">Summarizing</span></p>
+<ul>
+<li><p>Problem: Multicollinearity</p></li>
+<li><p>Solution: Hierarchical partitioning of variance</p></li>
+<li><p>Make an inclusive model and do hierarchical partitioning of variance</p></li>
+<li><p>Determine which terms (lower order and higher order, additive and interactive), if any, can be eliminated</p></li>
+</ul>
+</section>
+<section id="nested-model-comparisons-7" class="slide level2" data-menu-title="Causal priority">
+<h2>Nested model comparisons</h2>
+<h3 id="causal-priority">Causal priority</h3>
+<ul>
+<li><p>So which one gets causal priority?</p></li>
+<li><p>Main effects generally do:</p>
+<ul>
+<li>But now two-way interactions and squared terms are just as complicated</li>
+<li>So are three-way interactions and cubed terms, etc.</li>
+</ul></li>
+<li><p>There is no convention for deciding which comes first:</p>
+<ul>
+<li>There is no mathematical solution to this problem</li>
+<li>We need a theoretical solution</li>
+</ul></li>
+</ul>
+</section>
+<section id="nested-model-comparisons-8" class="slide level2" data-menu-title="Principles of strong inference">
+<h2>Nested model comparisons</h2>
+<h3 id="use-principles-of-strong-inference">Use principles of strong inference</h3>
+<ul>
+<li><p>Only test plausible rival hypotheses</p></li>
+<li><p>Be careful and selective!</p></li>
+<li><p>Even with a small number of primitive component terms (main effects), once you examine all the possible interactions you will have a complex model</p></li>
+<li><p>You will exhaust your statistical power very quickly</p></li>
+</ul>
+</section>
+<section id="nested-model-comparisons-9" class="slide level2" data-menu-title="Ex: NMC in R">
+<h2>Nested model comparisons</h2>
+<h3 id="doing-it-in-r-1">Doing it in R</h3>
+<div style="font-size: 0.75em;">
+<ul>
+<li>Fit all the relevant models</li>
+</ul>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>mod_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> drat <span class="sc">+</span> wt<span class="sc">:</span>drat, <span class="at">data =</span> mtcars) <span class="co"># inclusive model</span></span>
+<span id="cb5-2"><a href=""></a>mod_int  <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> drat          , <span class="at">data =</span> mtcars) <span class="co"># restricted model</span></span>
+<span id="cb5-3"><a href=""></a>mod_drat <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt                 , <span class="at">data =</span> mtcars) <span class="co"># restricted model</span></span>
+<span id="cb5-4"><a href=""></a>mod_wt   <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> drat               , <span class="at">data =</span> mtcars) <span class="co"># restricted model</span></span>
+<span id="cb5-5"><a href=""></a>mod_null <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="dv">1</span>                  , <span class="at">data =</span> mtcars) <span class="co"># null model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><mybr></mybr></p>
+<div class="fragment closelist" style="font-size: 0.72em;">
+<ul>
+<li>Test higher order variables and main effects using nested model comparisons
+<ul>
+<li>In R we do this with the <span class="emph"><code>anova()</code></span> function</li>
+<li>It is not an anova (for that we use the <span class="emph"><code>aov()</code></span> function)</li>
+<li>We include the restricted model and the inclusive model to test if removing the variable from the inclusive model significantly changes the goodness of it</li>
+<li>If it does, then we leave it in (it is important)</li>
+<li>If it doesn’t, then we can take it out (it is not important)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="emph p-font" style="font-size: 1.75em;">Nested model comparisons</span></p>
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">Doing it in R</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">anova</span>(mod_int, mod_full) <span class="co"># Test interaction effect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: mpg ~ wt + drat
+Model 2: mpg ~ wt + drat + wt:drat
+  Res.Df    RSS Df Sum of Sq      F  Pr(&gt;F)  
+1     29 269.24                              
+2     28 225.62  1    43.624 5.4139 0.02744 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><br></p>
+<div style="font-size: 0.77em;">
+<ul>
+<li class="fragment">There is a <code>wt</code> x <code>drat</code> interaction (<em>F</em>(1) = 5.41, p &lt; 0.03)</li>
+<li class="fragment">Note: we report the df, the F-ratio, and the p-value from this output.</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="capitalizing-on-chance" class="title-slide slide level1 center" data-background-image="./index_files/img/dice.png" data-background-size="300px" data-background-position="85% 50%" data-visibility="uncounted">
+<h1>Capitalizing on Chance</h1>
+
+</section>
+<section id="section-42" class="slide level2 smaller" data-visibility="uncounted">
+<h2></h2>
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">Inflated R<sup>2</sup></span></p>
+<div class="closelist">
+<ul>
+<li>Least squares estimation capitalizes on chance associations</li>
+<li>Including irrelevant variables increases R<sup>2</sup> non-significantly</li>
+<li>Sample R<sup>2</sup> is systematically overestimated, or inflated</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">As k increases, there is more capitalization on chance</span></p>
+<div class="closelist">
+<ul>
+<li>This is bad</li>
+<li>Every variable you measure has some error in it, and some of this error can be capitalized on by least squared estimation and this will boost our observed R<sup>2</sup></li>
+<li>So sample R<sup>2</sup> deviates more from the true population R<sup>2</sup> as k increases</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">As n increases, the overestimation of R<sup>2</sup> is less:</span></p>
+<div class="closelist">
+<ul>
+<li>This is good</li>
+<li>The bigger the sample we have, the closer our observed R<sup>2</sup> will be to the real population R<sup>2</sup></li>
+<li>When n equals infinity, then our sample R<sup>2</sup> would equal the real R<sup>2</sup></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-43" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Alpha slippage</span></p>
+<div class="closelist">
+<ul>
+<li>Alpha is the probability of committing a Type I Error</li>
+<li>Experiment-Wise alpha is a function of the Test-Wise alpha and the total number of significance tests conducted:</li>
+</ul>
+</div>
+<p><span class="math display">\[\color{red}{\alpha _{e}} = 1 - (1 - \color{blue}{\alpha _{T}})^\color{green}{k}\]</span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span style="color: blue;">α<sub>T</sub></span> =</td>
+<td style="text-align: left;">Test-wise alpha</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span style="color: green;">k</span> =</td>
+<td style="text-align: left;">Number of significance tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="emph">α<sub>E</sub></span> =</td>
+<td style="text-align: left;">Experiment-wise alpha</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-44" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Alpha slippage</span></p>
+<p><br></p>
+<div class="columns">
+<div class="column">
+<center>
+<span class="emph">.40</span> = 1 - (1 - <span style="color: blue;">0.05</span>)<sup><span style="color: green;">10</span></sup>
+</center>
+<p><br><br></p>
+<div style="font-size: 0.7em;">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span style="color: blue;">0.05</span> =</td>
+<td style="text-align: left;">Test-wise alpha</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span style="color: green;">10</span> =</td>
+<td style="text-align: left;">Number of significance tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="emph">.40</span> =</td>
+<td style="text-align: left;">Experiment-wise alpha</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column">
+<center>
+<span class="emph">.64</span> = 1 - (1 - <span style="color: blue;">0.05</span>)<sup><span style="color: green;">20</span></sup>
+</center>
+<p><br><br></p>
+<div style="font-size: 0.7em;">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span style="color: blue;">0.05</span> =</td>
+<td style="text-align: left;">Test-wise alpha</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span style="color: green;">20</span> =</td>
+<td style="text-align: left;">Number of significance tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="emph">.64</span> =</td>
+<td style="text-align: left;">Experiment-wise alpha</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</section>
+<section id="section-45" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Alpha slippage</span></p>
+<p><br></p>
+<div class="columns">
+<div class="column">
+<center>
+<span class="emph">.99</span> = 1 - (1 - <span style="color: blue;">0.05</span>)<sup><span style="color: green;">100</span></sup>
+</center>
+<p><br><br></p>
+<div style="font-size: 0.7em;">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span style="color: blue;">0.05</span> =</td>
+<td style="text-align: left;">Test-wise alpha</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span style="color: green;">100</span> =</td>
+<td style="text-align: left;">Number of significance tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="emph">.99</span> =</td>
+<td style="text-align: left;">Experiment-wise alpha</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column">
+<center>
+<span class="emph">.1.0</span> = 1 - (1 - <span style="color: blue;">0.05</span>)<sup><span style="color: green;">500</span></sup>
+</center>
+<p><br><br></p>
+<div style="font-size: 0.7em;">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span style="color: blue;">0.05</span> =</td>
+<td style="text-align: left;">Test-wise alpha</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span style="color: green;">500</span> =</td>
+<td style="text-align: left;">Number of significance tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="emph">1.0</span> =</td>
+<td style="text-align: left;">Experiment-wise alpha</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</section>
+<section id="section-46" class="slide level2 smaller" data-visibility="uncounted">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Alpha slippage</span></p>
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">Taking repeated risks</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div style="font-size: 0.9em;">
+<ul>
+<li>Every time you do a significance test (at .05) you take a risk of making a Type I Error every 1 in 20 times</li>
+<li>If you do it once you have a 95% chance of being right</li>
+<li>But if you do it multiple times your chances of eventually making a Type I Error greatly increases</li>
+<li>If you have an issue of a journal with 20 articles in it (each using a .05 alpha), the chance of one of those articles reporting a Type I Error is pretty high</li>
+</ul>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="right">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="index_files/figure-revealjs/alpha_slippage-1.png" class="img-fluid quarto-figure quarto-figure-right" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="empirical-selection-of-variables" class="title-slide slide level1 transition center" data-visibility="uncounted">
+<h1>Empirical selection of variables</h1>
+
+</section>
+<section id="section-47" class="slide level2 smaller" data-menu-title="Overview">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<p><br></p>
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">We should strive to create theoretically specified models that test a priori alternative hypotheses:</span></p>
+<ul>
+<li>In these models (in a perfect world), all hypotheses are carefully selected, plausible rival hypotheses</li>
+<li>Higher order variables are included when theoretically motivated</li>
+</ul>
+<div class="fragment">
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">We should be discouraged from testing atheoretical ones:</span></p>
+<ul>
+<li>If you do all possible comparisons, you weaken your statistical power and you get alpha slippage</li>
+<li>When you try to correct for the alpha slippage (by making a more stringent test-wise alpha) you run the risk of committing more Type II Errors</li>
+</ul>
+</div>
+</section>
+<section id="section-48" class="slide level2">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Empirical selection of variables</span></p>
+<ul>
+<li>There are other techniques in multiple regression that are completely different in basic objectives i.e., empirical selection or exploratory regression techniques</li>
+<li>There are two reasons why we would use exploratory regression techniques that are not based on theory:
+<ul>
+<li>Reason 1: Some people are interested in prediction and not causation, and predictions don’t require theory</li>
+<li>Reason 2: There may be an honest lack of theory in the area you are investigating</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-49" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<p><span class="p-font" style="font-size: 1.35em; color: #666666;">Reason 1: Some people are interested in prediction and not causation, and predictions don’t require theory</span></p>
+<p><mybr></mybr></p>
+<ul>
+<li>For example, motorcycle ownership increases car insurance rates:
+<ul>
+<li>Causally, this makes no sense</li>
+<li>But for predictive purposes, it does make sense</li>
+</ul></li>
+</ul>
+<p><mybr></mybr></p>
+<ul>
+<li>Maybe motorcycle owners are riskier car drivers due to personality factors:
+<ul>
+<li>High testosterone?</li>
+<li>Frontal lobe development?</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-50" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<p><span class="p-font" style="font-size: 1.35em; color: #666666;">Reason 2: There may be an honest lack of theory in the area you are investigating</span></p>
+<ul>
+<li>It might be an entirely new area of scientific investigation</li>
+<li>It might be the case that existing theory was found inadequate or insufficiently supported by the evidence</li>
+</ul>
+<p><mybr></mybr></p>
+<ul>
+<li>However, some people still use exploratory techniques even when they have a theory that they could be testing
+<ul>
+<li>experimenter degrees of freedom</li>
+<li>p-hacking</li>
+<li>fishing expeditions</li>
+<li>pseudoscience</li>
+</ul></li>
+</ul>
+<p><mybr></mybr></p>
+<ul>
+<li>This is unnecessary and wrong</li>
+</ul>
+</section>
+<section id="section-51" class="slide level2">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em;">Empirical selection of variables</span></p>
+<p><span class="p-font" style="font-size: 1.25em; color: #666666;">How should we do it?</span></p>
+<div style="font-size: 0.8em;">
+<ul>
+<li>First, we must design the study:
+<ul>
+<li>We need to sample a broad set of variables, and think as creatively and diversely as you can about what to include</li>
+<li>We need to go beyond the “usual suspects”</li>
+</ul></li>
+<li>Second, we need to specify the model:
+<ul>
+<li>How do we figure out which variables to include and which should be excluded without a theory?</li>
+</ul></li>
+<li>Two elementary methods:
+<ul>
+<li>Backward Elimination</li>
+<li>Forward Selection</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section-52" class="slide level2 smaller" data-menu-title="Backward elimination">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="backward-elimination">Backward elimination</h3>
+<div style="font-size: 0.8em;">
+<ol type="1">
+<li class="fragment">Include all your variables into a single simultaneous regression model:
+<ul>
+<li class="fragment">Get b-weights, R<sup>2</sup>, etc.</li>
+<li class="fragment">Take a look at all the b-weights</li>
+</ul></li>
+<li class="fragment">Try to eliminate any irrelevant variables:
+<ul>
+<li class="fragment">You are focusing on variables with the smallest effect sizes and the “least significant” b-weights</li>
+<li class="fragment">Do this one step at time, because multicollinearity may be involved</li>
+<li class="fragment">Remember this is not theoretically-based and there are no a priori hypotheses</li>
+</ul></li>
+<li class="fragment">Re-fit the model with the weakest variable eliminated</li>
+<li class="fragment">Compare new model to the original one and see if its better:
+<ul>
+<li class="fragment">Look at the new R<sup>2</sup> and then compare the R<sup>2</sup> of the model with that variable included with the model with that variable removed, and see if the new model is statistically acceptable</li>
+</ul></li>
+<li class="fragment">If you could eliminate that variable, you now look at this model (not the original model) and see which is the next weakest variable
+<ul>
+<li class="fragment">Try to eliminate this one, and do the same thing all over again</li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="section-53" class="slide level2">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="backward-elimination-1">Backward elimination</h3>
+<ul>
+<li><p>Keep doing this until when everything left is significant</p></li>
+<li><p>When removing something more results in a statistically significant sR<sup>2</sup> F-ratio</p></li>
+<li><p>Then you have to put that last variable back in, and that’s your final model</p></li>
+<li><p>You are picking off the weakest variables until you can no longer validly eliminate anything else</p></li>
+</ul>
+</section>
+<section id="section-54" class="slide level2">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="backward-elimination---problems">Backward elimination - Problems</h3>
+<ul>
+<li><p>In true backward elimination, once you eliminate something you can’t go back on that decision</p></li>
+<li><p>Due to multicollinearity, one variable that was eliminated in an earlier step might now be significant in a new context, but you have no way to know this</p></li>
+<li><p>Remember significance is often context dependent</p></li>
+<li><p>Variable A might have not been significant in step 2, but now that variables B, C, and D have been removed it might be significant</p></li>
+</ul>
+</section>
+<section id="section-55" class="slide level2 smaller" data-menu-title="Forward selection">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="forward-selection">Forward selection</h3>
+<ul>
+<li>Correlate all the predictors with the criterion variable (do bivariate correlations of all the predictors with the criterion):
+<ul>
+<li>Pick the one with the best bivariate correlation</li>
+<li>Run the model with this correlation</li>
+</ul></li>
+<li>Now, you don’t want to include your next largest bivariate correlation from the original correlations that you found:
+<ul>
+<li>Instead, you partial out variable 1 from all remaining variables</li>
+<li>Then you take the one with the biggest sR<sup>2</sup> after variable 1 was removed and run the next regression</li>
+</ul></li>
+<li>To get variable 3, you partial out variable 1 and 2 and look at the variable with the next biggest sR<sup>2</sup>, and then you put that one in</li>
+</ul>
+</section>
+<section id="section-56" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="forward-selection-1">Forward selection</h3>
+<div style="font-size: 0.85em;">
+<ul>
+<li class="fragment">After each step, you take the difference in your R<sup>2</sup> values and test it for significance to see if the newly added variable adds a significant amount of variance to the previous model:
+<ul>
+<li class="fragment">If you have already added variables 1 and 2, and now you want to add variable 3 you need to compare the model with variables 1 and 2 with the model with variables 1, 2, and 3</li>
+<li class="fragment">So you subtract the R<sup>2</sup> and do the semi-partial F-ratio</li>
+<li class="fragment">Just like an a priori hierarchical procedure!</li>
+</ul></li>
+<li class="fragment">Do this until the most recently added variable no longer adds significance variance (sR<sup>2</sup>) to the model:
+<ul>
+<li class="fragment">And then throw that variable back!</li>
+</ul></li>
+<li class="fragment">Why not test the remaining ones?
+<ul>
+<li class="fragment">Because you were testing the ones with the largest sR<sup>2</sup>, so any remaining variables will have lower sR<sup>2</sup> and will therefore not add any more significant variance to the model than your last tested variable</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section-57" class="slide level2">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="forward-selection---problems">Forward selection - Problems</h3>
+<p>Similar to Backward Elimination:</p>
+<div class="closelist">
+<ul>
+<li>As you put things in there is no way for you to go back and change variables that you already added</li>
+<li>So there is no way of going back and rethinking what you have already done</li>
+<li>Even though variable 1 may have been good in the original context, but now that other variables have been added, it might not make so much sense anymore</li>
+<li>So you can end up in two completely different places using the same data when you use forward selection and backward elimination</li>
+</ul>
+</div>
+</section>
+<section id="section-58" class="slide level2 smaller" data-menu-title="Stepwise regression">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<h3 id="stepwise-regression">Stepwise regression</h3>
+<div style="font-size: 0.85em;">
+<ul>
+<li>Stepwise Regression is the most popular procedure for exploratory regression:
+<ul>
+<li>It is a combination of forward selection and backward elimination</li>
+<li>Not the same as hierarchical partitioning of variance!</li>
+</ul></li>
+<li>Basically, you take one step forward, one step back, one step forward, etc.:
+<ul>
+<li>Start with forward selection, then do backward elimination</li>
+<li>Until both of the procedures fail and you can’t add anything profitably and you can’t lose anything profitably</li>
+</ul></li>
+<li>By combining the two procedures, you get to add something, but then you follow the addition immediately with a backward elimination to see if you can eliminate something else:
+<ul>
+<li>Which you couldn’t do previously with forward selection</li>
+<li>The backward elimination looks at everything, so you can eliminate anything and anytime as long as you don’t lose a significant amount of variance</li>
+<li>So you can eliminate variable 1 in step 8</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section-59" class="slide level2 smaller">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.95em;">Empirical selection of variables</span></p>
+<p><span style="color: white;">hi</span></p>
+<h3 id="benefits-of-using-exploratory-regression-techniques">Benefits of using exploratory regression techniques:</h3>
+<ul>
+<li>You get to proceed in spite of lack of theoretical guidance</li>
+<li>Produce hypotheses/theory building for future research</li>
+</ul>
+<p><br></p>
+<h3 id="major-problems-involved">Major problems involved:</h3>
+<ul>
+<li>No a priori theory involved, so the procedure is totally mindless</li>
+<li>You are testing a very large number of variables and you are running a HUGE risk of committing Type I Errors due to massive capitalization on chance</li>
+<li>In fact, you might end up with nothing but Type I Errors!</li>
+</ul>
+</section></section>
+<section>
+<section id="reporting-results" class="title-slide slide level1 transition center" data-visibility="uncounted">
+<h1>Reporting results</h1>
+
+</section>
+<section id="reporting" class="slide level2 smaller" data-menu-title="Overview">
+<h2>Reporting</h2>
+<ul>
+<li>The main purpose is to explain what you did in a manner that is understandable and reproducible. You should report:</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><span style="color: green;"><strong>General description</strong></span>:</p>
+<ul>
+<li>Model fit to the data</li>
+<li>Variables included (criterion, predictors)</li>
+<li>Coding/transformations</li>
+<li>Model assumptions/diagnostics</li>
+<li>How you assessed main effects/interactions</li>
+<li>Decision rules (e.g., alpha)</li>
+</ul>
+</div><div class="column fragment" style="width:40%;">
+<p><span style="color: blue;"><strong>Results</strong></span></p>
+<ul>
+<li>Model fit</li>
+<li>Main effects (usually NMC)</li>
+<li>Interactions (usually NMC)</li>
+<li>Interpretations:
+<ul>
+<li>directionality</li>
+<li>effect-size</li>
+<li>uncertainty</li>
+</ul></li>
+</ul>
+</div><div class="column fragment" style="width:15%;">
+<p><br><br><br></p>
+<div class="box-note">
+<center>
+<p><span class="math inline">\(\beta\)</span><br>
+SE<br>
+CI<br>
+p-val</p>
+</center>
+</div>
+</div></div>
+</section>
+<section id="reporting-1" class="slide level2" data-background-image="./index_files/img/reporting1.png" data-background-size="1300px" data-background-position="50% 60%" data-menu-title="Examples">
+<h2>Reporting</h2>
+<h3 id="general-description">General description</h3>
+<p><span class="absolute" style="font-size: 0.5em; color: #666666;bottom: -15px; right: 38%; "><span class="citation" data-cites="llompart2016lexically">Llompart &amp; Casillas (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></span></p>
+</section>
+<section id="section-60" class="slide level2" data-background-image="./index_files/img/reporting2.png" data-background-size="1000px" data-background-position="60% 60%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em; color: #666666;">Reporting</span></p>
+<h3 id="results">Results</h3>
+<p><span class="absolute" style="font-size: 0.5em; color: #666666;bottom: -15px; right: 38%; "><span class="citation" data-cites="llompart2016lexically">Llompart &amp; Casillas (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></span></p>
+</section>
+<section id="section-61" class="slide level2" data-background-image="./index_files/img/reporting3.png" data-background-size="1200px" data-background-position="60% 60%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em; color: #666666;">Reporting</span></p>
+<h3 id="general-description-1">General description</h3>
+<p><span class="absolute" style="font-size: 0.5em; color: #666666;bottom: -15px; right: 38%; "><span class="citation" data-cites="casillas2015production">Casillas (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span></span></p>
+</section>
+<section id="section-62" class="slide level2" data-background-image="./index_files/img/reporting4.png" data-background-size="1300px" data-background-position="60% 55%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em; color: #666666;">Reporting</span></p>
+<h3 id="results-1">Results</h3>
+<p><span class="absolute" style="font-size: 0.5em; color: #666666;bottom: -15px; right: 38%; "><span class="citation" data-cites="casillas2015production">Casillas (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span></span></p>
+</section>
+<section id="section-63" class="slide level2" data-background-image="./index_files/img/reporting_bayesian1.png" data-background-size="1200px" data-background-position="60% 70%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em; color: #666666;">Reporting</span></p>
+<h3 id="general-description-2">General description</h3>
+<p><span class="absolute" style="font-size: 0.5em; color: #666666;bottom: -15px; right: 38%; "><span class="citation" data-cites="casillas2023using">Casillas et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></span></p>
+</section>
+<section id="section-64" class="slide level2" data-background-image="./index_files/img/reporting_bayesian2.png" data-background-size="1300px" data-background-position="60% 60%">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em; color: #666666;">Reporting</span></p>
+<h3 id="results-2">Results</h3>
+<p><span class="absolute" style="font-size: 0.5em; color: #666666;bottom: -15px; right: 38%; "><span class="citation" data-cites="casillas2023using">Casillas et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></span></p>
+</section>
+<section id="section-65" class="slide level2" data-background-color="#000" data-visibility="uncounted">
+<h2></h2>
+<p></p><div id="tweet-61526"></div><script>tweet={"url":"https:\/\/twitter.com\/merm_bot\/status\/1841652233651233066","author_name":"Senior Spreadsheet Engineer","author_url":"https:\/\/twitter.com\/merm_bot","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EJust another day writing R code \u003Ca href=\"https:\/\/t.co\/OuFxW8A1lA\"\u003Epic.twitter.com\/OuFxW8A1lA\u003C\/a\u003E\u003C\/p\u003E&mdash; Senior Spreadsheet Engineer (@merm_bot) \u003Ca href=\"https:\/\/twitter.com\/merm_bot\/status\/1841652233651233066?ref_src=twsrc%5Etfw\"\u003EOctober 3, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-61526").innerHTML = tweet["html"];</script><p></p>
+<!-- another day coding in R -->
+<!-- https://www.react-graph-gallery.com/example/t-test-playground -->
+</section></section>
+<section id="references" class="title-slide slide level1 final smaller scrollable" data-visibility="uncounted">
+<h1><span class="emph">References</span></h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-qass50_ch4" class="csl-entry" role="listitem">
+Berry, W. D., &amp; Feldman, S. (1985a). Multicollinearity. In W. D. Berry &amp; S. Feldman (Eds.), <em>Multiple regression in practice</em> (pp. 37–50). Newbury Park, CA: Sage.
+</div>
+<div id="ref-qass50_ch2" class="csl-entry" role="listitem">
+Berry, W. D., &amp; Feldman, S. (1985b). Specification error. In W. D. Berry &amp; S. Feldman (Eds.), <em>Multiple regression in practice</em> (pp. 18–25). Newbury Park, CA: Sage.
+</div>
+<div id="ref-casillas2015production" class="csl-entry" role="listitem">
+Casillas, J. V. (2015). Production and perception of the/i/-/i/vowel contrast: The case of L2-dominant early learners of english. <em>Phonetica</em>, <em>72</em>(2-3), 182–205. <a href="https://doi.org/10.1159/000431101">https://doi.org/10.1159/000431101</a>
+</div>
+<div id="ref-casillas2023using" class="csl-entry" role="listitem">
+Casillas, J. V., Garrido-Pozú, J. J., Parrish, K., Arroyo, L. F., Rodrı́guez, N., Esposito, R., Chang, I., Gómez, K., Constantin-Dureci, G., Shao, J., et al. (2023). Using intonation to disambiguate meaning: The role of empathy and proficiency in L2 perceptual development. <em>Applied Psycholinguistics</em>, <em>44</em>(5), 913–940. <a href="https://doi.org/10.1017/S0142716423000310">https://doi.org/10.1017/S0142716423000310</a>
+</div>
+<div id="ref-cohen_1975" class="csl-entry" role="listitem">
+Cohen, J., &amp; Cohen, P. (1975). <em>Applied multiple regression/correlation analysis for the behavioral sciences</em>. Lawrence Erlbaum.
+</div>
+<div id="ref-figueredo_selection" class="csl-entry" role="listitem">
+Figueredo, A. J. (2013a). Empirical selection of variables. <em>Statistical Methods in Psychological Research</em>.
+</div>
+<div id="ref-figueredo_regression" class="csl-entry" role="listitem">
+Figueredo, A. J. (2013b). Multiple regression. <em>Statistical Methods in Psychological Research</em>.
+</div>
+<div id="ref-figueredo_inference" class="csl-entry" role="listitem">
+Figueredo, A. J. (2013c). Strong inference. <em>Statistical Methods in Psychological Research</em>.
+</div>
+<div id="ref-qass22_ch3" class="csl-entry" role="listitem">
+Lewis-Beck, M. (1980). Multiple regression. In M. Lewis-Beck (Ed.), <em>Applied regression: An introduction</em> (pp. 47–74). Newbury Park, CA: Sage.
+</div>
+<div id="ref-llompart2016lexically" class="csl-entry" role="listitem">
+Llompart, M., &amp; Casillas, J. V. (2016). Lexically driven selective adaptation by ambiguous auditory stimuli occurs after limited exposure to adaptors. <em>The Journal of the Acoustical Society of America</em>, <em>139</em>(5), EL172–EL177. <a href="https://doi.org/10.1121/1.4951704">https://doi.org/10.1121/1.4951704</a>
+</div>
+<div id="ref-qass57_ch2" class="csl-entry" role="listitem">
+Schroeder, L. D., Sjoquist, D. L., &amp; Stephan, P. E. (1986a). Multiple linear regression. In L. D. Schroeder, D. L. Sjoquist, &amp; P. E. Stephan (Eds.), <em>Understanding regression analysis: An introductory guide</em> (pp. 29–35). Newbury Park, CA: Sage.
+</div>
+<div id="ref-qass57_ch5" class="csl-entry" role="listitem">
+Schroeder, L. D., Sjoquist, D. L., &amp; Stephan, P. E. (1986b). Problems and issues of linear regression. In L. D. Schroeder, D. L. Sjoquist, &amp; P. E. Stephan (Eds.), <em>Understanding regression analysis: An introductory guide</em> (pp. 65–80). Newbury Park, CA: Sage.
+</div>
+<div id="ref-wickham2016r" class="csl-entry" role="listitem">
+Wickham, H., &amp; Grolemund, G. (2016). <em>R for data science: Import, tidy, transform, visualize, and model data</em>. O’Reilly Media.
+</div>
+</div>
+<aside class="notes">
+<p><span class="citation" data-cites="wickham2016r">Wickham &amp; Grolemund (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span> <span class="citation" data-cites="qass22_ch3">Lewis-Beck (<a href="#/references" role="doc-biblioref" onclick="">1980</a>)</span> <span class="citation" data-cites="qass57_ch2">Schroeder et al. (<a href="#/references" role="doc-biblioref" onclick="">1986a</a>)</span> <span class="citation" data-cites="qass57_ch5">Schroeder et al. (<a href="#/references" role="doc-biblioref" onclick="">1986b</a>)</span> <span class="citation" data-cites="qass50_ch2">Berry &amp; Feldman (<a href="#/references" role="doc-biblioref" onclick="">1985b</a>)</span> <span class="citation" data-cites="qass50_ch4">Berry &amp; Feldman (<a href="#/references" role="doc-biblioref" onclick="">1985a</a>)</span> <span class="citation" data-cites="figueredo_regression">Figueredo (<a href="#/references" role="doc-biblioref" onclick="">2013b</a>)</span> <span class="citation" data-cites="figueredo_inference">Figueredo (<a href="#/references" role="doc-biblioref" onclick="">2013c</a>)</span> <span class="citation" data-cites="figueredo_selection">Figueredo (<a href="#/references" role="doc-biblioref" onclick="">2013a</a>)</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section>
+<section id="bonus---statistical-control-in-mrc" class="title-slide slide level1 transition center" data-visibility="uncounted">
+<h1>Bonus <span style="color: white;">- Statistical control in MRC</span></h1>
+
+</section>
+<section id="section-66" class="slide level2" data-background-image="./index_files/img/mrc_math.png" data-background-size="contain" data-visibility="uncounted">
+<h2></h2>
+<aside class="notes">
+<p>We are interested in testing the hypothesis that taller people are better at math.</p>
+<p>A priori we know that this doesn’t make sense.</p>
+<p>In a population of children we know that there is a causal relationship between age and height and age and math score (as children get older they get taller; as children get older they get better at math)</p>
+<p>Thus, in a population of children we would observe a correlation between height and math (age is a confound)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-67" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+<p><span class="emph p-font" style="font-size: 1.75em; color: #666666;">Some data</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   10000 obs. of  5 variables:
+ $ age     : num  5 5 5 5 5 5 5 5 5 5 ...
+ $ height  : num  36.8 40.9 41.9 40.9 40 ...
+ $ score   : num  57.4 55.7 53.9 56.8 53.8 ...
+ $ age_c   : num  -6.5 -6.5 -6.5 -6.5 -6.5 -6.5 -6.5 -6.5 -6.5 -6.5 ...
+ $ height_c: num  -12.64 -8.56 -7.51 -8.5 -9.42 ...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    age height score age_c height_c
+1   7.9  40.43 58.87  -3.6    -8.98
+2  18.0  56.09 70.63   6.5     6.68
+3   5.1  42.76 57.14  -6.4    -6.65
+4  17.0  57.87 72.29   5.5     8.45
+5  16.8  54.27 68.92   5.3     4.86
+6  18.0  54.04 70.00   6.5     4.62
+7  11.5  43.96 66.89   0.0    -5.45
+8  17.3  58.31 72.03   5.8     8.89
+9  16.9  57.62 70.04   5.4     8.21
+10  8.8  44.40 60.44  -2.7    -5.01</code></pre>
+</div>
+</div>
+</section>
+<section id="section-68" class="slide level2 smaller center" data-visibility="uncounted">
+<h2></h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">lm</span>(height <span class="sc">~</span> age_c, mrc_ex_data) <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href=""></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = height ~ age_c, data = mrc_ex_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-11.255  -2.033   0.031   2.013  11.665 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 49.415790   0.029986  1648.0   &lt;2e-16 ***
+age_c        1.261273   0.007989   157.9   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.999 on 9998 degrees of freedom
+Multiple R-squared:  0.7137,    Adjusted R-squared:  0.7137 
+F-statistic: 2.493e+04 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/mrc-math-height-age-plot-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-69" class="slide level2 smaller center" data-visibility="uncounted">
+<h2></h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">lm</span>(score <span class="sc">~</span> age_c, mrc_ex_data) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href=""></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = score ~ age_c, data = mrc_ex_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.6328 -1.3835  0.0204  1.3758  7.1214 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 64.367451   0.019954  3225.8   &lt;2e-16 ***
+age_c        1.240785   0.005316   233.4   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.995 on 9998 degrees of freedom
+Multiple R-squared:  0.8449,    Adjusted R-squared:  0.8449 
+F-statistic: 5.447e+04 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/mrc-math-score-age-plot-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-70" class="slide level2 smaller center" data-visibility="uncounted">
+<h2></h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">lm</span>(score <span class="sc">~</span> height_c, mrc_ex_data) <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href=""></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = score ~ height_c, data = mrc_ex_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-11.5541  -2.1973  -0.0409   2.1267  12.3640 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 64.367451   0.031959    2014   &lt;2e-16 ***
+height_c     0.701625   0.005703     123   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.196 on 9998 degrees of freedom
+Multiple R-squared:  0.6022,    Adjusted R-squared:  0.6021 
+F-statistic: 1.513e+04 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/mrc-math-score-height-plot-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<div class="footnote">
+<p><strong>What can we do about this</strong>?</p>
+</div>
+</div>
+</section>
+<section id="section-71" class="slide level2 smaller center" data-visibility="uncounted">
+<h2></h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">lm</span>(score <span class="sc">~</span> height_c <span class="sc">+</span> age_c, mrc_ex_data) <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href=""></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = score ~ height_c + age_c, data = mrc_ex_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.6294 -1.3824  0.0191  1.3743  7.1263 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 64.367451   0.019955 3225.66   &lt;2e-16 ***
+height_c    -0.001730   0.006655   -0.26    0.795    
+age_c        1.242967   0.009936  125.09   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.995 on 9997 degrees of freedom
+Multiple R-squared:  0.8449,    Adjusted R-squared:  0.8449 
+F-statistic: 2.723e+04 on 2 and 9997 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/mrc-ex-adj-age-plot-1.png" class="img-fluid" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<div class="footnote">
+<p><strong>We partial out the spurious relationship between math score <br> and height by conditioning on age</strong>.</p>
+</div>
+</div>
+</section>
+<section id="section-72" class="slide level2" data-visibility="uncounted">
+<h2></h2>
+
+
+<img data-src="index_files/figure-revealjs/mrc-final-1.png" class="img-fluid r-stretch" width="3000"></section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":false,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"hideMissingTitles":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: true,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 2,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.5e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+<script src="https://platform.twitter.com/widgets.js"></script>
+</body></html>

@@ -1,0 +1,990 @@
+
+# {.transition visibility="uncounted"}
+
+{{< tweet user=AndrewsNotFunny id=1365382679877812224 >}}
+<!-- regression the movie tweet --> 
+
+
+
+# Multiple regression and correlation {.transition visibility="uncounted"}
+
+---
+
+## MRC {data-menu-title="Multiple causation"}
+
+### Multiple Causation
+
+::: {.closelist}
+- In nature: a phenomenon may have more than a single cause
+- In statistics: criterion variable might have more than a single relevant predictor
+
+::: {.fragment}
+- Leaving a potential cause out of the equation would constitute "omitting 
+a relevant variable"
+  - This biases the parameter estimates for the other predictors
+  - We are not always sure of what those other predictors might be!
+:::
+:::
+
+---
+
+## MRC {.smaller data-menu-title="Overview"}
+
+### Overview
+
+::: {.closelist}
+- We have specified a linear formula that can account for the relationship between two continuous variables. 
+
+::: box-note
+$$Y = a + bX + e$$
+:::
+
+- It is uncommon for a given response variable to be determined by a single predictor
+- Most theories/models in social science predict complex relationships 
+between multiple predictors.
+  - Score ~ SES + IQ
+  - Duration ~ speech rate + number of syllables
+  - RT ~ working memory + word position
+- We can extend the linear model equation to account for multiple predictors.
+:::
+
+---
+
+## {.smaller}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Overview]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {.columns}
+::: {.column width="50%"}
+- We want to construct the equivalent of an [**OR**]{.emph} statement or a *logical disjunction* 
+- Boolean Algebra tells us that an [**OR**]{.emph} statement implies *summing things*
+- In other words, all X's do not have to be high at once to have an effect on Y
+- For example, you can get an overall high GRE score by scoring high in verbal but (somewhat) low in math:
+  - They have to have a high total (or sum) 
+  - A sum is implicitly an [**OR**]{.emph} statement
+:::
+
+::: {.column width="20%"}
+:::
+
+::: {.column width="30%"}
+
+<center>
+| A</br>(x) | B</br>(y) | C</br>(x [**∨**]{.emph} y) |
+| :-------: | :-------: | :------------------------: |
+| 0         | 0         | [**0**]{.emph}             | 
+| 0         | 1         | [**1**]{.emph}             |
+| 1         | 0         | [**1**]{.emph}             |
+| 1         | 1         | [**1**]{.emph}             |
+
+<br>
+
+If A = 1  
+[**OR**]{.emph}  
+B = 1,  
+then C = 1  
+Otherwise, C = 0
+</center>
+
+:::
+:::
+
+---
+
+## {background-image="https://www.jvcasillas.com/media/rstats/memes/lm_additive_effects.png" background-size="contain"}
+
+---
+
+## {background-image="../../assets/img/pensar2.png" background-position="95% 50%" background-size="500px"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Overview]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+- What if we based linguistics Grad School  
+acceptances solely on GRE scores?
+
+. . .
+
+- One shouldn't have to score high on all of  
+the entrance requirements, but just rank  
+high on the sum of all of them
+
+. . .
+
+- We could use a weighted sum
+
+---
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Overview]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+**Weighted sum**
+
+::: {.closelist}
+- Some things are more important than others in this overall sum
+- For example, GRE is actually a poor predictor of graduate student success
+- So we might want to weight this variable lower than something like GPA or letters of recommendation
+- We can use least squares estimation to get the b-weights with the lowest SS<sub>ERROR</sub>
+:::
+
+---
+
+## MRC {.smaller data-menu-title="The equation"}
+
+### The equation
+
+::: {.columns}
+::: {.column}
+::: box-note
+$$Y = a + bX + e$$
+:::
+:::
+
+::: {.column}
+::: box-error
+$$Y = a_{0} + b_{1}X_{1}  + b_{2}X_{2} {...} b_{k}X_{k} + e$$
+:::
+:::
+:::
+
+<br>
+
+::: fragment
+
+### Least Squares Estimation 
+
+- R will estimate the b-weights that minimize the sum of the squared errors 
+(`r emojifont::emoji("no_good_woman")` by hand examples)
+- Ideally these are the b-weights that best represent how much each predictor 
+is really contributing to the variance in the criterion variable (y)
+- We will again use least squares estimation to achieve the best (optimal) 
+regression weights
+
+:::
+
+---
+
+## MRC {data-menu-title="Multiple predictors"}
+
+### Multiple predictors
+
+::: {style="font-size: 0.9em;"}
+- The multiple predictors represent different hypotheses regarding what might be affecting the criterion variable
+- In other words, multiple regression is just creating a sum of weighted predictors to explain the total variance in the criterion variable
+- The way that the predictors function together is not necessarily the same as the way that they each function alone
+- Bivariate regression is just a degenerate form ("special case") of multiple regression containing only one predictor
+:::
+
+---
+
+## MRC {data-menu-title="Interpretation"}
+
+### Interpretation
+
+#### Summarizing so far...
+
+::: {style="font-size: 0.9em;"}
+- In multiple regression we assume additivity and linearity
+- In Boolean Algebra, a sum (addition) represents a logical disjunction
+- The multiple regression "weighted sum" is a complex [**OR**]{.emph} statement
+:::
+
+<br>
+
+[What does this mean for our parameter estimates and how do we interpret them?]{.fragment .p-font style="color: #666666;"}
+
+---
+
+## MRC {data-menu-title="(Semi)partial betas"}
+
+[(Semi)partial betas]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+- [Intercept]{.emph} ( $a_{0}$ ): the value of the criterion variable when all predictors are equal to 0 (same as bivariate regression)
+- [Slope]{.emph} ( $b_{k}$ ): the change in the criterion associated with a 1-unit change in $X_k$... [*with all other predictors held constant*]{.fragment}
+
+. . .
+
+</br>
+
+### How can we calculate the unique contribution of each predictor?
+
+---
+
+## {background-image="./index_files/img/ballentine1.png" background-size="contain" background-position="125% 50%"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+---
+
+## {background-image="./index_files/img/ballentine2.png" background-size="contain" background-position="125% 50%"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+. . .
+
+[Recall that the b-weight <br>of the bivariate model is $r(\frac{s_y}{s_x})$]{style="font-size: 0.85em;"}
+
+---
+
+## {background-image="./index_files/img/ballentine3.png" background-size="contain" background-position="125% 50%"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+---
+
+## {background-image="./index_files/img/ballentine4a.png" background-size="contain" background-position="125% 50%" data-menu-title="The Ballantine"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+### The "Ballantine"
+
+[@cohen_1975]{style="font-size: 0.8em;"}
+
+---
+
+## {background-image="./index_files/img/ballentine4b.png" background-size="contain" background-position="125% 50%"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.incremental style="font-size: 0.85em;"}
+- $r^{2}_{x1,x2} = c + d$
+- $r^{2}_{y,x1} = a + c$
+- $r^{2}_{y,x2} = b + c$
+- $R^{2}_{y,x1,x2} = a + b + c$
+:::
+
+---
+
+## {.smaller background-image="./index_files/img/ballentine5.png" background-size="contain" background-position="125% 50%" data-menu-title="Squared semipartial correlation"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Squared semipartial correlation]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {.incremental style="font-size: 0.85em;"}
+- $X_2$ removed from *explained*  
+variance
+- Represents unique contribution  
+of $X_1$
+- $sr^2 = R^{2}_{y,x1,x2} - r^{2}_{y,x2}$
+:::
+
+---
+
+## {.smaller background-image="./index_files/img/ballentine7.png" background-size="contain" background-position="125% 50%" data-menu-title="Squared partial correlation"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Squared partial<br>correlation]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {.incremental style="font-size: 0.85em;"}
+- Y variance not accounted for by  
+$X_2$ is the area of A + E
+- The area explained by $X_1$ = A  
+(squared semipartial correlation)
+- Unqiue contribution of $X_1$ is  
+$A / (A + E)$ or...
+- $pr^{2}_{x1} = \frac{A}{A + E}$
+- We are pretending that $X_2$  
+doesn't exist (statistically)
+:::
+
+
+---
+
+## {.smaller background-image="./index_files/img/ballentine4b.png" background-size="350px" background-position="95% 20%" data-menu-title="Statistical control"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Statistical control<sup>1</sup>]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+- Not the same as [experimental control]{color="green"}
+  - We are interested in some treatment
+  - Some participants receive treatment, some do not
+  - *Only* looking at highly proficient bilinguals (not low, med. prof.)
+- We partial out the effects of predictor $X_1$ from all other predictors and use this error to determine $b_1$
+- We are estimating the effect of one predictor while holding the other predictors constant
+- This will only work if predictors are not correlated (i.e., there *cannot* be 
+multicollinearity)
+
+::: aside
+<sup>1</sup>This is a poor choice for a name. Ask why.
+
+:::
+
+---
+
+## {background-image="https://i.imgflip.com/25dwia.jpg" background-position="90% 50%" background-size="650px" data-menu-title="Conceptual understanding"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Conceptual understanding]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {.columns}
+::: {.column}
+::: {style="font-size: 0.85em;"}
+- MRC is much more difficult to conceptualize than the bivariate linear regression
+- If we consider a simple three variable model (y ~ x<sub>1</sub> + x<sub>2</sub>) we are fitting a hyperplane to a three dimensional space
+- More variables = more complexity
+:::
+:::
+:::
+
+<!-- complex math meme "my model has more than two variables" -->
+
+---
+
+## {.center}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+```{r}
+#| label: additive_plots
+#| fig-asp: 0.4
+#| fig-align: "center"
+p1 <- ggplot(mtcars, aes(x = wt, y = mpg)) + 
+  geom_point() + 
+  geom_smooth(method = lm, formula = "y ~ x") + 
+  scale_y_continuous(breaks = seq(0, 35, 5)) + 
+  coord_cartesian(ylim = c(5, 35)) + 
+  ds4ling_bw_theme(base_size = 16)
+
+p2 <- ggplot(mtcars, aes(x = drat, y = mpg)) + 
+  geom_point() + 
+  geom_smooth(method = lm, formula = "y ~ x") + 
+  scale_y_continuous(
+    position = "right", 
+    breaks = seq(0, 35, 5)
+  ) + 
+  coord_cartesian(ylim = c(5, 35)) + 
+  labs(y = NULL) + 
+  ds4ling_bw_theme(base_size = 16)
+
+p1 + p2
+```
+
+. . .
+
+<center>
+[mpg ~ wt]{.emph} & [mpg ~ drat]{color="blue"}  
+!=  
+MRC
+</center>
+
+::: footer
+[3d viz](https://www.ds4ling.jvcasillas.com/slides/05_lm/03_mrc/index_files/html/threejs1.html)
+:::
+
+---
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: additive_3d-ls
+#| fig-asp: 1.0
+#| fig-align: "center"
+# Left side
+plot3D::scatter3D(
+  x, y, z, 
+  pch = 21, cex = 2, expand = 0.75, 
+  colkey = F, theta = 0, phi = 5, 
+  ticktype = "detailed",
+  xlab = "wt", ylab = "drat", zlab = NULL, 
+  col.panel ="steelblue"
+)
+```
+:::
+
+::: {.column}
+```{r}
+#| label: additive_3d-rs
+#| fig-asp: 1.0
+#| fig-align: "center"
+#right side
+plot3D::scatter3D(
+  x, y, z, 
+  pch = 21, cex = 2,  expand = 0.75, 
+  colkey = F, theta = 90, phi = 5, 
+  ticktype = "detailed",
+  xlab = "wt", ylab = "drat", zlab = NULL, 
+  col.panel ="steelblue"
+)
+```
+:::
+:::
+
+---
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: additive_3d_surface-ls
+#| fig-asp: 1.0
+#| fig-align: "center"
+# Left side with regression surface
+plot3D::scatter3D(
+  x, y, z, 
+  pch = 21, cex = 2, expand = 0.75, colkey = F,
+  theta = 0, phi = 5, ticktype = "detailed",
+  xlab = "wt", ylab = "drat", zlab = NULL,
+  surf = list(x = x_pred, y = y_pred, 
+  z = z_pred_add,  
+  facets = NA, col = 'grey60')
+)
+```
+:::
+
+::: {.column}
+```{r}
+#| label: additive_3d_surface-rs
+#| fig-asp: 1.0
+#| fig-align: "center"
+# Right sides with regression surface
+plot3D::scatter3D(
+  x, y, z, 
+  pch = 21, cex = 2,  expand = 0.75, colkey = F,
+  theta = 90, phi = 5, ticktype = "detailed",
+  xlab = "wt", ylab = "drat", zlab = NULL, 
+  surf = list(x = x_pred, y = y_pred, 
+  z = z_pred_add, 
+  facets = NA, col = 'grey60')
+)
+```
+:::
+:::
+
+---
+
+## {background-image="./index_files/img/additive_3d_corner.png" background-size="contain"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+---
+
+## {.smaller data-menu-title="MRC in R"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+### Doing it in R
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: fit_mrc
+mod <- lm(mpg ~ wt + drat, data = mtcars)
+summary(mod)
+```
+:::
+
+::: {.column}
+$$mpg_{i} \sim \beta_{0} + \beta_{1}wt_{i} + \beta_{2}drat_{i} + \epsilon_{i}$$
+
+```{r}
+#| label: fit_mrc_fake
+#| eval: false
+#| echo: true
+mod <- lm(mpg ~ wt + drat, data = mtcars)
+summary(mod)
+```
+:::
+:::
+
+---
+
+## {.smaller data-menu-title="CIs and significance tests"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+### CIs and significance tests
+
+<mybr>
+
+```{r}
+#| label: fit_mrc_print
+cis <- confint(mod)
+summary(mod) |> 
+  tidy() |> 
+  mutate(`95% LB` = cis[, 1], `95% UB` = cis[, 2]) |>
+  select(
+    ` ` = term, 
+    beta = estimate, 
+    SE = std.error, 
+    `95% LB`, 
+    `95% UB`, 
+    `t-ratio` = statistic, 
+    p.value
+  ) |> 
+  kable(format = 'html', digits = 2) |> 
+  kable_styling(font_size = 28)
+```
+
+<br>
+
+::: {.incremental}
+- Same as bivariate case, but we adjust t-value for k (added estimated parameters)
+- Statistical significance implies that the 95% CI doesn't contain 0
+- [**Rule of thumb**]{.emph}: multiply SE of b-weight by 2 and add/subtract to/from b-weight 
+- T-ratio: Parameter estimate divided by SE  
+[(i.e., 30.29 / 7.32 = `r round(30.29 / 7.32, 2)`)]{.fragment}
+- [**Rule of thumb**]{.emph}: |t| > 2 = significant<sup>&trade;</sup> 
+:::
+
+---
+
+## {.smaller data-menu-title="R<sup>2</sup>"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+### Coefficient of multiple determination: R<sup>2</sup>
+
+- Adding variables will always explain more variance
+- Not necessarily better
+- There is an adjustment for exhausting degrees of freedom
+
+::: {.fragment}
+
+### Note
+
+- [r]{color="green"}: pearson product moment correlation
+- [r<sup>2</sup>]{color="purple"}: coefficient of determination; variance explained (bivariate case)
+- [R<sup>2</sup>]{.emph}: coefficient of multiple determination; variance explained (MRC)
+
+:::
+
+---
+
+## {.smaller data-menu-title="Making predictions"}
+
+[MRC]{.emph .p-font style="font-size: 1.75em;"}
+
+[Making predictions]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+- Recall the multiple regression equation...
+
+$$Y = a_{0} + b_{1}X_{1}  + b_{2}X_{2} {...} b_{k}X_{k} + e$$
+
+- Our `mtcars` model can be summarized as...
+
+```{r}
+#| label: print-eq
+extract_eq(mod, wrap = T, use_coefs = T, fix_signs = F, ital_vars = T)
+```
+
+::: {.columns}
+::: {.column}
+::: {.fragment style="font-size: 0.85em;"}
+What is the predicted `mpg` for a car that weighs 1 unit with a rear axel ratio (drat) of 2?  
+And one that weighs 1 with a drat of 4?  
+And one that weighs 3 with a drat of 2.5?
+:::
+:::
+
+::: {.column}
+::: {.fragment style="font-size: 0.85em;"}
+- `r round(coef(mod)[1] + (1 * coef(mod)[2]) + (2 * coef(mod)[3]), 2)` $mpg = 30.29 + -4.78 \times 1 + 1.44 \times 2$
+- `r round(coef(mod)[1] + (1 * coef(mod)[2]) + (4 * coef(mod)[3]), 2)` $mpg = 30.29 + -4.78 \times 1 + 1.44 \times 4$
+- `r round(coef(mod)[1] + (3 * coef(mod)[2]) + (2.5 * coef(mod)[3]), 2)` $mpg = 30.29 + -4.78 \times 3 + 1.44 \times 2.5$
+:::
+:::
+:::
+
+
+# Interactions {.transition}
+
+---
+
+## {.smaller data-menu-title="Review"}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+[Recall]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {.columns}
+::: {.column}
+::: {style="font-size: 0.8em;"}
+- Assumptions of Multiple Regression: 
+  - Additivity
+  - Linearity
+- In Boolean Algebra, a sum (addition) represents a logical disjunction: 
+  - Multiple regression "weighted sum" is a complex "OR" statement
+:::
+:::
+
+::: {.column}
+
+<center>
+
+::: {style="font-size: 0.8em;"}
+| A</br>(x) | B</br>(y) | C</br>(x [**∨**]{.emph} y) |
+| :-------: | :-------: | :------------------------: |
+| 0         | 0         |   [**0**]{.emph}           | 
+| 0         | 1         |   [**1**]{.emph}           |
+| 1         | 0         |   [**1**]{.emph}           |
+| 1         | 1         |   [**1**]{.emph}           |
+
+If A = 1  
+[**OR**]{.emph}  
+B = 1,  
+then C = 1  
+Otherwise, C = 0
+:::
+
+</center>
+
+:::
+:::
+
+---
+
+## {.smaller}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+[Recall]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {.columns}
+::: {.column}
+::: {style="font-size: 0.8em;"}
+- Assumptions of Multiple Regression: 
+  - Additivity
+  - Linearity
+- In Boolean Algebra, a sum (addition) represents a logical [disjunction]{color="blue"}: 
+  - Multiple regression "weighted sum" is a complex "OR" statement
+:::
+
+[Non-Additivity: Interaction Terms]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {style="font-size: 0.8em;"}
+- In Boolean Algebra, a product (multiplication) represents a logical [**conjunction**]{.emph}:
+  - Interaction terms represent "AND" terms
+  - These are included within the overall "OR" statement
+:::
+:::
+
+::: {.column}
+
+<center>
+
+::: {style="font-size: 0.8em;"}
+| A</br>(x) | B</br>(y) | C</br>(x [**∧**]{.emph} y) | </br>[(x ∨ y)]{color="grey"} |
+| :-------: | :-------: | :------------------------: | :-----------------: |
+| 0         | 0         |   [**0**]{.emph}           |   [0]{color="#666666"} |
+| 0         | 1         |   [**0**]{.emph}           |   [1]{color="#666666"} |
+| 1         | 0         |   [**0**]{.emph}           |   [1]{color="#666666"} |
+| 1         | 1         |   [**1**]{.emph}           |   [1]{color="#666666"} |
+
+If A = 1  
+[**AND**]{.emph}  
+B = 1,  
+then C = 1  
+Otherwise, C = 0
+:::
+
+</center>
+
+:::
+:::
+
+---
+
+## {.smaller data-menu-title="Genetics, drugs, and alcohol"}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+[Genetics example]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {style="font-size: 0.8em;"}
+- You share 50% of genes with your Mom (M) and 50% with your Dad (D)
+- But your parents don’t share that many genes
+- M and D are generally not genetically correlated with each other, but you (the M\*D interaction) are correlated with both M and D (more on this later)
+:::
+:::
+
+::: {.column .fragment}
+[Drugs and alcohol]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {style="font-size: 0.8em;"}
+Consider taking the upcoming midterm in one of the following conditions
+
+- Neither Drugs nor Alcohol:
+  - probably best, produce highest score
+- Alcohol alone:
+  - Probably lower midterm scores than doing neither
+- Drugs alone:
+  - Probably lower midterm scores than doing neither
+- Alcohol and Drugs together:
+  - Probably lowest scores on the midterm exam of all the four possible conditions
+:::
+:::
+:::
+
+---
+
+## {.smaller}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+[Drugs and alcohol continued]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+- Is the effect of alcohol and drugs together equal to the negative effect 
+of alcohol PLUS the negative effect of drugs?
+  - Probably not
+  - Alcohol and drugs are known to interact 
+- This effect is a negative interaction
+- If you mix alcohol and drugs they have a larger combined effect than adding up the effects of each acting separately:
+  - For example, if alcohol makes your score drop 10 points, and the drug drops it 15 points, when you take both your score will very likely drop more than just 25 points
+- This effect is not additive, it is multiplicative
+
+---
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+[Non-additivity of effects]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {style="font-size: 0.8em;"}
+- You cannot add the effect of alcohol to the effect of drugs to predict the effect "alcohol *AND* drugs"
+- Because you get an extra effect (a boosting effect) by combing them
+- There is a synergistic effect of combining the terms
+- In principle, could be either more or less effective
+- You include this multiplicative [**AND**]{.emph} term (A\*D) in *ADDITION* to the other terms in the model
+:::
+
+
+
+
+
+
+
+
+---
+
+## {.smaller}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+
+<br>
+
+[The multiple regression formula:]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+::: {style="font-size: 0.85em;"}
+$Y = a_{0} + b_{1}X_{1} + b_{2}X_{2} + (b_{1}X_{1} \times b_{2}X_{2}) + e$
+:::
+
+<br>
+
+[Including interactions in R]{.p-font style="font-size: 1.2em; color: #666666;"}
+
+- We do this using [:]{.emph}
+- Or [\*]{.emph}
+:::
+
+::: {.column .fragment}
+
+<br>
+
+```{r}
+#| label: nonadditive_mod
+#| echo: true
+m <- lm(mpg ~ wt + drat + wt:drat, data = mtcars) 
+summary(m)
+```
+:::
+:::
+
+---
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+### Visualization
+
+- Including an interaction affects the hyperplane fit to the data
+
+---
+
+## {background-color="black"}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: additive_interaction-l
+#| fig-asp: 1.0
+# compare additive and int models
+par(bg = 'black')
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 50, phi = 10,  colkey = F, tick.col = 'white', 
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_add,  
+              facets = NA))
+```
+
+:::
+
+::: {.column}
+```{r}
+#| label: additive_interaction-r
+#| fig-asp: 1.0
+# compare additive and int models
+par(bg = 'black')
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 50, phi = 10,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_int,  
+              facets = NA))
+```
+:::
+:::
+
+---
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: additive_interaction2-l
+#| fig-asp: 1.0
+# compare additive and int models
+#par(bg = 'black')
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 50, phi = 10,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_add,  
+              facets = NA))
+```
+:::
+
+::: {.column}
+```{r}
+#| label: additive_interaction2-r
+#| fig-asp: 1.0
+# compare additive and int models
+#par(bg = 'black')
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 50, phi = 10,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_int,  
+              facets = NA))
+```
+:::
+:::
+
+---
+
+## {background-color="black"}
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: additive_interaction3-l
+#| fig-asp: 1.0
+# compare additive and int models
+par(bg = 'black')
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 0, phi = 5,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_int,  
+              facets = NA))
+```
+:::
+
+::: {.column}
+```{r}
+#| label: additive_interaction3-r
+#| fig-asp: 1.0
+# compare additive and int models
+par(bg = 'black')
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 90, phi = 5,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_int,  
+              facets = NA))
+```
+:::
+:::
+
+---
+
+[Interactions]{.emph .p-font style="font-size: 1.75em;"}
+
+::: {.columns}
+::: {.column}
+```{r}
+#| label: additive_interaction4-l
+#| fig-asp: 1.0
+# compare additive and int models
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 0, phi = 5,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_int,  
+              facets = NA))
+```
+:::
+
+::: {.column}
+```{r}
+#| label: additive_interaction4-r
+#| fig-asp: 1.0
+# compare additive and int models
+plot3D::scatter3D(x, y, z, 
+  pch = 1, cex = 0, bty = "bl", expand = 0.75,
+  theta = 90, phi = 5,  colkey = F,
+  xlab = "wt", ylab = "drat", zlab = "mpg", 
+  surf = list(x = x_pred, y = y_pred, z = z_pred_int,  
+              facets = NA))
+```
+:::
+:::
+
+
+
+# {background-color="#cc0033" data-menu-title="Interim summary" .smaller}
+
+### [Review]{.p-font style="font-size: 1.75em; color: #ffffff;"}
+
+<br><br>
+
+::: {.columns}
+::: {.column}
+### [What we've seen so far]{color="white"}
+
+- Bivariate regression
+- MRC
+- Additive effects
+- Interactions  
+(multiplicative effects)
+:::
+
+::: {.column}
+### [What's left]{color="white"}
+
+- Assumptions
+- Model specification
+- Alpha slippage
+- Empirical selection of variables
+- Reporting results
+:::
+:::

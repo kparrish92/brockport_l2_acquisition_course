@@ -1,0 +1,500 @@
+---
+title: "Chapter 1: Language Learning in Early Childhood (Lightbrown & Spada)"
+format: revealjs
+editor: visual
+---
+
+## Intro 
+
+Isn't it crazy that we learn languages? 
+
+You plop a potato (baby) into any given environment and it picks up a system of sounds, syntax, and words necessary to convey a potentially infinite number of thoughts and ideas. 
+
+How do they do it?
+
+Is it similar around the world?
+
+How do bilingual children acquire more than one language? 
+
+---
+
+## The First Three Years: Milestones and developmental Sequences 
+
+There is a high degree of similarity in the early language of children all over the world 
+
+**Developmental sequence**: The order in which certain features of a language (for example, negation) are acquired in language learning. Also called developmental stages or order of acquisition.”
+
+---
+
+## Babies are amazing at sound discrimination 
+
+Before they learn words, babies can distinguish sounds.
+
+Prior to 6 months old, they can distinguish sounds in all world languages.
+
+After 6 months, they lose the ability and focus on the language of their environment
+
+Interestingly, babies must hear real human voices to learn; recordings do not suffice (Conboy & Kuhl, 2011)
+
+---
+
+## Speech development 
+
+At 12 months, most babies can say a word 
+
+By two - by two years they can produce at least 50 words, and do two word phrases 
+
+---
+
+## Morpheme acquisition 
+
+In the 60s, researchers wanted to know how children acquire grammatical morphemes.
+
+Roger Brown (1973) studied three childrens' linguistic development and found they all developed in a similar order:
+
+>present progressive *-ing* (Mommy running)
+plural *-s* (two books)
+irregular past forms (Baby *went*)
+possessive *-s*
+copula (Mommy *is* happy)
+articles *the* and *a*)
+regular past tense *-ed* (she walk*ed*)
+third person singular simple present *-s* (she runs)
+auxiliary *be* (he *is* coming)
+
+Children learn these at different rates 
+
+We don't know why it occurs in this order - the best guest is a mixture of cognitive contraints and difficulty in perception and pronunciation. 
+
+---
+
+## The Wug Test 
+
+Jean Berko (1958) developed a test to identify if children had acquired a given morphrme. 
+
+Children are shown drawings of imaginary creatures with novel names or people performing mysterious actions. 
+
+> Here is a wug. Now there are two of them. There are two ____ 
+
+> Here is a man who knows how to bod. Yesterday he did the same thing. Yesterday, he ____
+
+Success suggests children can **generalize**.
+
+---
+
+## Negation 
+
+Learned very early. 
+
+Bloom (1991): children understand but take time to produce negation.
+
+**Stage 1**: 
+
+Negation is usually expressed by the word ‘no’, either all alone or as the first word in the utterance.
+
+> No. No cookie. No comb hair.
+
+---
+
+## Negation 
+
+**Stage 2**:
+Utterances grow longer and the sentence subject may be included. The negative word appears just before the verb. Sentences expressing rejection or prohibition often use ‘don’t’.
+
+> Daddy no comb hair. Don’t touch that!
+
+**Stage 3**:
+
+The negative element is inserted into a more complex sentence. Children may add forms of the negative other than ‘no’, including words like ‘can’t’ and ‘don’t’. These sentences appear to follow the correct English pattern of attaching the negative to the auxiliary or modal verb. However, children do not yet vary these forms for different persons or tenses.
+
+> I can’t do it. He don’t want it.
+
+---
+
+## Negation 
+
+**Stage 4**
+
+Children begin to attach the negative element to the correct form of auxiliary verbs such as ‘do’ and ‘be’.
+
+> You didn’t have supper. She doesn’t want it.
+
+Even though their language system is by now quite complex, they may still have difficulty with some other features related to negatives.
+
+> I don’t have no more candies.
+
+---
+
+## Questions 
+
+wh-words emerge in a predictable order (Bloom, 1991)
+
+"What" is generally first and learned as a chunk.
+
+"Where" and "who" come next. 
+
+"Why" comes at the end of the second year of life.
+
+"How" and "when" tend to be last. 
+
+---
+
+## Questions 
+
+Partly tied to cognitive development 
+
+**Stage 1**
+
+Children’s earliest questions are single words or simple two- or three-word sentences with rising intonation:
+
+> Cookie? Mommy book?
+
+At the same time, they may produce some correct questions—correct because they have been learned as chunks:
+
+> Where’s Daddy? What’s that?
+
+**Stage 2**
+
+As they begin to ask more new questions, children use the word order of the declarative sentence, with rising intonation.
+
+> You like this? I have some?
+
+They continue to produce the correct chunk-learned forms such as ‘What’s that?’ alongside their own created questions.
+
+---
+
+## Questions 
+
+**Stage 3**
+
+Gradually, children notice that the structure of questions is different and begin to produce questions such as:
+
+> Can I go?
+> Are you happy?
+
+They may be right for the wrong reason: fronting.
+
+> Is the teddy is tired? Do I can have a cookie?
+> Why you don’t have one? Why you catched it?
+
+**Stage 4**
+
+At Stage 4, some questions are formed by subject–auxiliary inversion.
+
+> Are you going to play with me?
+
+At this stage, children can even add ‘do’ in questions.
+
+> “Do dogs like ice cream?”
+
+---
+
+## Questions 
+
+**Stage 5**
+
+Both wh-and yes/no questions are formed correctly.
+
+> Are these your boots?
+> Why did you do that?
+> Does Daddy have a box?
+
+Negative questions may still be a bit too difficult.
+
+> Why the teddy bear can’t go outside?
+
+When wh- words appear in subordinate clauses or embedded questions, children overgeneralize the inverted form:
+
+> Ask him why can’t he go out.
+
+---
+
+## Questions
+
+**Stage 6**
+
+At this stage, children are able to correctly form all question types, including negative and complex embedded questions.
+
+Passage through developmental sequences does not always follow a steady uninterrupted path. 
+
+Children appear to learn new things and then fall back on old patterns when there is added stress in a new situation or when they are using other new elements in their language. 
+
+But the overall path takes them towards a closer and closer approximation of the language that is spoken around them
+
+---
+
+## The school years
+
+Language of course grows during school years where literacy plays a major role. 
+
+**Vocabulary**
+
+Vocabulary grows very quickly at this time (enter knowing ~2000 words and learn thousands more)
+
+Vocabulary growth is associated with the amount of reading.
+
+Various text types and both assigned reading and reading for fun are thought to be vital (Dee Gardner, 2004)
+
+Vocabulary size can grow from hundreds to thousands of words per year (Nagy, Herman & Anderson, 1985)
+
+---
+
+## The school years
+
+**Registers**
+
+Children learn how written language differs from spoken language
+
+Formal vs informal 
+
+Science report vs narrative 
+
+Learning of standard varieties 
+
+---
+
+## Explaining first language acquisition 
+
+We talked about *what* is learned - but the question remains - **how?**
+
+There are three main views:
+
+Behaviourist
+
+Innatist
+
+Interactionist/developmental
+
+---
+
+## The behaviourist perspective
+
+B. F. Skinner (1957)
+
+**Behaviourism** is a theory of learning that was influential in the 1940s and 1950s, especially in the United States
+
+Children imitate the language produced by those around them and get ‘positive reinforcement’.
+
+Encouraged by their environment, children would continue to imitate and practice these sounds and patterns until they formed ‘habits’ of correct language use.
+
+The quality and quantity of the language the child hears, as well as the consistency of the reinforcement offered by others in the environment, would shape the child’s language behavior.
+
+---
+
+## Analysing children’s speech: Definitions and examples
+
+“The behaviourists viewed **imitation** and **practice** as the primary processes in language development.
+
+**Imitation**: word-for-word repetition of all or part of someone else’s utterance.
+
+> MOTHER
+> Shall we play with the dolls?
+> LUCY
+> Play with dolls
+
+---
+
+## Analysing children’s speech: Definitions and examples
+
+**Practice**: repetitive manipulation of form.
+
+>CINDY
+>He eat carrots. The other one eat carrots. They both eat carrots.
+
+--
+
+Now examine the transcripts from Peter, Cindy, and Kathryn.
+
+All ~ 24 months old as they played with a visiting adult. 
+
+Using the definitions above, notice how Peter imitates the adult in the following dialogue.
+
+Peter (24 months) is playing with a dump truck while two adults, Patsy and Lois, look on.
+
+
+>PETER
+>Get more.
+
+>LOIS
+>You’re gonna put more wheels in the dump truck?
+
+>PETER
+>Dump truck. Wheels. Dump truck.
+
+(later)
+
+
+>PATSY
+>What happened to it (the truck)?
+
+
+>PETER
+>(looking under chair for it) Lose it. Dump truck! Dump truck! Fall! Fall!
+
+
+>LOIS
+>Yes, the dump truck fell down.
+
+
+>PETER
+>Dump truck fell down. Dump truck.
+
+---
+
+# Children imitate selectively 
+
+In Peter's speech, 30-40 percent of his sentences were imitations 
+
+He imitated only words that were just beginning to appear in his own spontaneous speech 
+
+Once words were well-known, he imitated new word (Bloom, Hood & Lightbrown, 1974).
+
+---
+
+## Children imitate selectively 
+
+Cindy (24 months, 16 days) is looking at a picture of a carrot in a book and trying to get Patsy’s attention.
+
+
+>CINDY
+>Kawo? kawo? kawo? kawo? kawo?
+
+
+>PATSY
+>What are the rabbits eating?
+
+
+>CINDY
+>They eating … kando?
+
+
+>PATSY
+>No, that’s a carrot.
+
+
+>CINDY
+>Carrot. (pointing to each carrot on the page) The other … carrot. The other carrot. The other carrot.
+
+---
+
+## Children imitate selectively 
+
+(A few minutes later, Cindy brings Patsy a stuffed toy rabbit.)
+
+>PATSY
+>What does this rabbit like to eat?
+
+>CINDY
+>(incomprehensible) eat the carrots.
+
+
+(Cindy gets another stuffed rabbit.)
+
+>CINDY
+>He (incomprehensible) eat carrots. The other one eat carrots. They both eat carrots.
+
+--
+
+(One week later, Cindy opens the book to the same page.)
+
+
+>CINDY
+>Here’s the carrots. (pointing) Is that a carrot?
+
+>PATSY
+>Yes.
+
+---
+
+## Creative language use 
+
+Although there is evidence in these two children of imitation, other studies have found that rates of imitation around 24 months is ~10%
+
+Children also use language creatively - not just repeating things. 
+
+Errors that children make show us that their language cannot simply be the product of imitation and practice
+
+Randall (36 months) had a sore on his hand.
+
+> MOTHER
+> Maybe we need to take you to the doctor.
+
+
+> RANDALL
+> Why? So he can doc my little bump?”
+
+Randall forms the verb ‘doc’ from the noun ‘doctor’, by analogy with farmers who farm, swimmers who swim, and actors who act.”
+
+---
+
+## Creative language use 
+
+Randall (2 years, 9 months) asked the following questions in various situations over the course of a day.
+
+> Are dogs can wiggle their tails?
+
+> Are those are my boots?
+
+> Are this is hot?
+
+Randall had concluded that the trick of asking questions was to put ‘are’ at the beginning of the sentence.
+
+---
+
+## Creative language use 
+
+These examples of children’s speech provide us with a window on the process of language learning.
+
+Imitation and practice alone cannot explain some of the forms created by children. 
+
+They are not merely repetitions of sentences that they have heard from adults.
+
+Children appear to pick out patterns and generalize them to new contexts
+
+Behaviourism offers a reasonable way of understanding how children learn some of the regular and routine aspects of language, especially at the earliest stages. 
+
+Children who do little overt imitation acquire language as fully and rapidly as those who imitate a lot.
+
+---
+
+## The innatist perspective
+
+Noam Chomsky proposed that all human languages are based on some innate universal principles.
+
+Chomsky...
+
+> challenged the behaviourist explanation for language acquisition. 
+
+> argued that children are biologically programmed for language and that language develops in the child in just the same way that other biological functions develop. 
+
+For example, all children will learn to walk as long as adequate nourishment and reasonable freedom of movement are provided.
+
+They do not have to be taught. 
+
+They will learn to walk at about the same age, and they will walk in essentially the same way. 
+
+For Chomsky, language acquisition is very similar. 
+
+The environment makes only a basic contribution—in this case, the availability of people who speak to the child. 
+
+The child, or rather, the child’s biological endowment, will do the rest.”
+
+---
+
+## The innatist perspective
+
+Chomsky also argued that behaviorist theory failed to account for the "logical problem of language acquisition".
+
+Children come to know more language than they possibly could have been exposed to.
+
+Childrens' minds are not blank slates waiting for something to imitate, but rather contain a specific innate ability to discover the underlying rules of a natural language in their environment.
+
+This must mean that a so-called template exists containing the principles that are universal to all human languages - Universal Grammar (UG).
+
+This would prevent the children from pursuing all sorts of wrong hypotheses about how language systems might work. 
+
+If equipped with UG, then children have to learn specific principles to guide their initial grammar. 
+
+P.38
+
+

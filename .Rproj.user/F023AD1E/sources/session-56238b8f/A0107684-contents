@@ -1,0 +1,16 @@
+<section id="$idprefix$title-slide"$for(title-slide-attributes/pairs)$ $it.key$="$it.value$"$endfor$>
+  <img width="400" src="https://raw.githubusercontent.com/kparrish92/brockport_logos/92e0bb152d882701f7512ae20780ab61c122123a/Edu%20Languages%20Instruct%20Design%203/PNG/Horizontal/BPT_LOGO_Horizontal_ELID_CMYK.png?token=GHSAT0AAAAAADG5HYPJHYAWNTHDYMWFY3VO2E4XAVA">
+  <h1 class="title">$title$</h1>
+$if(subtitle)$
+  <h3 class="subtitle">$subtitle$</h3>
+$endif$
+$for(author)$
+  <p class="author">$author$</p>
+$endfor$
+$for(institute)$
+  <p class="institute">$institute$</p>
+$endfor$
+$if(date)$
+  <p class="date">$date$</p>
+$endif$
+</section>

@@ -1,0 +1,189 @@
+---
+title: "Linguistics for Second Language Acquisition"
+subtitle: "Program"
+author: "Kyle Parrish, PhD"
+institute: "SUNY Brockport<mybr>Fall 2025<br>Last update: `r Sys.Date()`"
+---
+
+```{r}
+#| label: load-helpers
+#| echo: false 
+#| message: false 
+#| warning: false
+#| cache: false
+source(here::here("assets", "scripts", "helpers.R"))
+```
+
+# Overview {.transition}
+
+---
+
+## Details {.center}
+
+<br>
+Fall 2025  
+Monday, Wednesday, Friday 10:20 – 11:10  
+Office hours: MW 9:00am-10:00am & 3:30pm-4:30pm 
+Professor: Kyle Parrish
+
+<br>
+Office: Brown 218  
+Office hours: By appointment  
+Email: kparrish@brockport.edu
+
+---
+
+## Office hours {.center}
+
+- If possible, please always let me know if you're coming to office hours
+
+- You can set up an appointment by emailing me
+
+---
+
+## Course desecription {.smaller .center}
+
+### FCE473: Linguistics for Second Language Acquisition
+
+The objective of this course is to build a basic understanding of the linguistics of language acquisition. After a brief overview first language acquisition, this course will introduce students to the teaching methods and logic of second language teaching methods, ranging from older methods such as grammar translation to relatively newer methods such as Communicative Language Teaching (TLC). Importantly, rather than championing a single language teaching method, the primary focus of the course will be the underlying logic and evidence for each method and their applicability to distinct learning contexts and goals. In addition, students will engage with empirical research used to provide support for the various language teaching methods. 
+
+
+# Materials {.transition}
+
+---
+
+## Class websites {.center}
+
+- Brightspace: <https://brightspace.brockport.edu/>
+
+---
+
+## Books {.center .smaller}
+
+```{r}
+#| label: books-tbl
+#| results: 'asis'
+
+list(
+  a = list(
+      title = "Spada, N., & Lightbrown, P. (2021). How Languages Are Learned 5th Edition", 
+      link = 'https://www.amazon.com/How-Languages-are-Learned-5th/dp/0194406296'
+    )
+  ) |> 
+  bind_rows() |>
+  transmute(out = glue("- {title} [{{{{< fa link >}}}}]({link})")) |> 
+  pull(out)
+```
+
+# Coursework {.transition}
+
+---
+
+## Evaluation {.center}
+
+|                               |     |     |         |
+| :---------------------------- | --: | :-- | ------: |
+| Attendance and participation  | 10% | A   | 95--100 |
+| Presentation                  | 10% | A-  |  90--94 |
+| Written assignments (5)       | 30% | B+  |  87--89 |
+| Exams (3)                     | 30% | B   |  83--86 |
+| Final Paper                   | 20% | B-  |  80--82 |
+|                               |     | C+  |  77--79 |
+|                               |     | C   |  73--76 |
+|                               |     | C-  |  70--72 |
+|                               |     | D+  |  67--69 |
+|                               |     | D   |  63--66 |
+|                               |     | D-  |  60--62 |
+|                               |     | E   |     ≤59 |
+
+---
+
+## Attendance and participation {.center}
+
+Students are expected to attend all classes. Absences strongly diminish your ability to be successful in your courses. Per University policy, absences will be excused for documented illnesses, official representation of the University, death of a close relative, religious holiday, or other circumstances beyond the students’ control. Work and family obligations are not excused. If you must be absent, it is your responsibility to find out what you missed and to turn in all assigned work within a reasonable time frame as determined by your instructor. Absences, excused or not, do not alter this responsibility. If you miss more than two weeks of class (6 sessions for MWF classes, 4 for TR classes) for unexcused reasons, you can be assigned – per university policy – a failing grade for the course. Per departmental policy, 15 or more absences in a MWF class and 10 or more in a TR class will result in automatic failure of the course. If you have an exceptional situation or need, please communicate with your instructor regularly to manage your responsibilities for the course.  Attendance and participation rubrics will be found on Brightspace. 
+
+---
+
+## Written assignments (5) {.center}
+
+To review key concepts and check for understanding, a total of 5 written assignments will be assigned via Brightspace to be turned in outside of class. These assignments will contain specific prompts and will have prompt-specific word count requirements of 300-500 words in total.  
+
+---
+
+## Presentation {.center}
+
+During the final weeks of class, all students will prepare and present a 10-minute presentation outlining their topic for their final paper and current progress. The presentation should outline the big picture ideas and motivation for your topic, what has been done by others regarding your topic, and what practical take-home messages you have or will learn after completing this project as it relates to language teaching and learning. Presentations may be done with any software you feel comfortable with, but keep in mind what technology might be needed to display your presentation. 
+
+---
+
+## Exams (3) {.center}
+
+Three written exams will take place during class over the course of the semester. The exams will cover material discussed during class and material from the textbook. The exams will contain a combination of question types, including matching, multiple choice and essay questions. Study guides will be made available, and we will review them in the class prior to an exam.  
+
+---
+
+## Final paper {.smaller .center}
+
+### Overview
+
+A final paper of 5-7 pages will serve as the culminating event of this course. There are two options for the paper which are listed in further detail below. In both cases, one must include at least 7 unique citations from primary sources (preferably research from peer-reviewed journal articles).  
+
+---
+
+## {.Final paper}
+
+[Research Project]{.emph .p-font style="font-size: 1.75em;"}
+
+[Overview]{.p-font style="font-size: 1.2em; color: #666666"}
+
+Students have two options regarding the type of project they do:
+
+1. Option 1: A research proposal  
+    - A research proposal should outline an original idea for testing a specific teaching methodology. Though your topic should be as specific as possible (e.g. Does training method X improve the production of the sound /p/ in Spanish by English speakers?), you may choose from a wide range of topics including perception, production, grammar, vocabulary, motivation, accent, individual differences and more. Any ideas not listed here should be discussed with the professor. 
+
+2. Option 2: A research review  
+    - A review of the work done on a specific teaching methodology or technique. This review can be broader in the sense that it could include many language combinations. For instance, one technique called High Variability Phonetic Training was originally studied to teach Japanese learners of English the /r/-/l/ contrast (Lively, Logan, & Pisoni, 1993), but has been shown to help speakers of German and Spanish who learn English vowels (Iverson & Evans, 2009) as well as the /d, ɾ, r/ contrasts for American English learners of Spanish. Your review should include what the primary findings have been historically, how robust they are (how well they generalize), and what is still unknown or understudied.  
+
+All projects require the prior approval of the professor. 
+
+---
+
+```{r}
+#| label: syllabus-table
+#| message: false
+#| echo: false
+
+# Get link to rds file
+syl <- url("https://www.jvcasillas.com/syllabi/658/calendar/calendar_s2025.rds")
+
+# Load file and build table
+readRDS(syl) |> 
+  select(Date, Stats, Programming) |> 
+  kbl() |> 
+  kable_styling(font_size = 26) |> 
+  kable_paper(c("striped", "hover", "condensed"))
+```
+
+---
+
+## {.final visibility="uncounted"}
+
+![](https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/164.png){.absolute top="5" right="0" width="55" height="55"}
+
+::: {.p-font .emph style="font-size: 1.5em;"}
+Linguistics for Second Language Acquisition
+:::
+
+</br>
+
+More ways to contact me:  
+
+|                                                                            |                             |
+| -------------------------------------------------------------------------: | :-------------------------- |
+| <a href='mailto:kparrish@brockport.edu'>{{< fa solid envelope >}}</a> | [joseph.casillas@rutgers.edu]{.emph} |
+| <a href='https://github.com/kparrish'>{{< fa brands github >}}</a>       | [\@jvcasillas]{.emph}                 |
+
+: {tbl-colwidths="[25,75]"}
+
+
+# [References]{.emph} {.final visibility="uncounted"}
